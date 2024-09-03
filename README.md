@@ -1,4 +1,4 @@
-# Aulas-PE
+# Aulas-PW
 Projetos e Conteúdo das Aulas de PW
 
 - Olá eu sou o @MdevSs | Hi, i'm the @MdevSs 🖖
