@@ -11,14 +11,14 @@ body{
 }
 
 main{
-    width: 100%;
     min-height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     background-color: white;
-    padding: 50px;
+    padding: 100px;
     gap: 10px;
 }
 
@@ -33,7 +33,7 @@ nav{
     border-radius: 12px;
 }
 #cod, #trabalhos{
-    width: 50%;
+    width: max-content;
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -48,5 +48,19 @@ h2{
 
 ul{
     min-height: 100%;
-    margin: 0px 0px 0px 20px;
+    margin: 0px 0px 0px 0px;
+    text-wrap: nowrap;
+    width: max-content;
+    list-style: none;
+}
+
+ul li{
+    display: flex;
+}
+
+.download{
+    width: 30px;
+    position: relative;
+    top: -4px;
+    left: 5px;
 }

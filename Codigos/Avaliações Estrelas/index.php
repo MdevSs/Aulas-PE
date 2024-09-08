@@ -111,6 +111,7 @@ oAvaliacao = new FormData();
 oAvaliacao.append('txtNota', nPontos);
 oAvaliacao.append('txtObra', oImagem.dataset.codigo);
 
+
 fetch('avaliando.php', {'method': 'POST', 'body': oAvaliacao})
     .then(oResposta=>oResposta.json())
     .then(oDados=>console.log(oDados))

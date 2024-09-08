@@ -1,0 +1,124 @@
+<?php 
+    try{
+        // var = new PDO('mysqli: host = ip/localhost; dbname = nome do banco', 'usuario', 'senha')
+        $oCon = new PDO('mysql: host=localhost; dbname=biblioteca', 'root', '');
+        var_dump($oCon);
+    } catch(PDOException $oErro) {
+        die($oErro -> getMessage());
+    }
+
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p data-algum-valor="algo"></p>
+    <style>
+        div{
+            background-color: gray;
+            width: max-content;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+        }
+    </style>
+
+    <?php 
+    
+    $cSQL = "SELECT codigo, nome, imagem FROM acervo";
+    
+    // $oReg = $oCon -> query($cSQL);
+    // $oReg = $oReg -> fetchAll(PDO::FETCH_ASSOC);
+
+    // $oReg = $oCon -> query($cSQL)->fetchAll(PDO::FTECH_ASSOC);
+    
+    // PDO::FETCH_ASSOC
+    // PDO::FETCH_NUM
+    // PDO::FETCH_BOTH
+    // PDO::FETCH_COLUMN
+
+
+    foreach($oCon -> query($cSQL)->fetchAll(PDO::FETCH_ASSOC) as $oReg)
+    {
+        echo '<div>
+            <img src="'. $oReg['imagem'] .'" alt="obra">
+            <h2>'. $oReg['nome'] .'</h2>
+            <img src="../../../../imagens/stars.png" alt="avaliacao" data-n-valor="'. $oReg['codigo'] .'" onClick="fnAvalia(this, event)">
+              </div>';
+
+    }
+    
+    ?>
+
+    
+
+    <script>
+
+        function fnAvalia(oImagem, e){
+            console.log(e);
+            console.log(oImagem);
+
+            let nPor = e.offsetX/e.target.offsetWidth;
+            nPor = nPor.toFixed(1)*100;
+            console.log(nPor)
+            console.log("linear-gradient(to right, #FFF000 "+ nPor +"%, transparent "+ nPor +"%)")
+            oImagem.style.background = "linear-gradient(to right, #FFF000 "+ nPor +"%, transparent "+ nPor +"%)";
+
+            console.log(oImagem.dataset.nValor);
+
+            let nPontos = 0;
+
+            if(nPor<20 && nPor>0)
+                nPontos = 1;
+            else if(nPor<40)
+                nPontos = 2;
+            else if(nPor<60)
+                nPontos = 3;
+            else if(nPor<80)
+                nPontos = 4;
+            else
+                nPontos = 5;
+
+            
+
+            // oDados = {
+            //     "nObra": parseInt(oImagem.dataset.nValor),
+            //     "nNota": nPontos
+            // };
+            
+            oForm = new FormData();
+            oForm.append("nObra", oImagem.dataset.nValor);
+            oForm.append("nNota", nPontos);
+
+
+            fetch('avaliar.php', {
+                'method': 'POST',
+                'header': {'Content-Type': 'application/json'},
+                'body': oForm})
+                .then(oResposta=>oResposta.json())
+                .then(oRes=>console.log(JSON.parse(oRes)))
+                .catch(oError=>alert(oError));
+                
+
+        }
+
+        // function fnSeleciona(e)
+        // {
+        //  console.log(e);   
+        // }
+
+    </script>
+
+</body>
+</html>
