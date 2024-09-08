@@ -1,0 +1,330 @@
+/*
+config da pag
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --firstColor: #eeeeff;
+    --secondColor: #7b2cbf;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: poppins;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: auto;
+    height: auto;
+    background: transparent;
+    overflow-x: hidden;
+}
+
+a{
+    width: 100px;
+    height: 50px;
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s linear;
+}
+
+a:hover{
+    color: var(--firstColor);
+    background: var(--secondColor);
+    box-shadow: 0px 0px 10px var(--secondColor);
+    transform: scale(1.05);
+}
+
+input{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    padding: 10px;
+    transition: all 0.3s linear;
+}
+
+input::placeholder{
+    color: var(--secondColor);
+}
+
+input:hover, input:focus{
+    color: var(--secondColor);
+    box-shadow: 0px 0px 4px var(--secondColor);
+    transform: scale(1.05);
+    outline: none;
+}
+
+select{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    transition: all 0.3s linear;
+}
+
+select:hover, select:focus{
+    color: var(--secondColor);
+    box-shadow: 0px 0px 4px var(--secondColor);
+    transform: scale(1.05);
+    outline: none;
+}
+
+/*
+section-1
+*/
+div.section-1{
+    width: 100vw;
+    height: 100vh;
+    background: url(../IMG/FundoBranco.png);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+div.section-images{
+    width: 100vw;
+    height: 100vh;
+    background: url(../IMG/FundoBranco.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+    position: fixed;
+}
+div.section-images div.border{
+    width: 90%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dbdbe8b4;
+    backdrop-filter: blur(15px);
+    border-radius: 23px;
+    padding: 25px;
+}
+div.section-images div.border div.content{
+    width: 100%;
+    padding: 30px;
+    height: 100%;
+    background-color: var(--firstColor);
+    backdrop-filter: blur(15px);
+    border-radius: 13px;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: inherit;
+    box-sizing: border-box;
+}
+div.content div.content-button{
+    width: 100%;
+    height: 20%;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1.5px solid var(--secondColor);
+}
+#switch-button{
+    width: 400px;
+    height: 42.5px;
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    transition: all 0.3s ease-in-out;
+}
+#switch-button:hover{
+    color: var(--firstColor);
+    background: var(--secondColor);
+    box-shadow: 0px 0px 10px var(--secondColor);
+    transform: scale(1.05);
+}
+.content-images{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    align-content: stretch;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 30px;
+    background-color: var(--firstColor);
+    overflow-y: scroll;
+}
+.Acervo{
+    display: flex;
+    width: 20%;
+    min-height: 100px;
+    background-color: #FAFAFA;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    font-size: 8px;
+    margin: 20px 0px;
+}
+div.Acervo-img{
+    height: 190px;
+    width: 90%;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+}
+div.Acervo-img img{
+    width: 100%;
+    height: 85%;
+
+}
+div.Acervo-content{
+    border-top: 2px solid black;
+    box-sizing: initial;
+    padding: 10px;
+    width: 70%;
+    height: 110px;
+}
+div.section-1 > form{
+    width: 30vw;
+    padding: 30px;
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+div.section-1 > form > h1{
+    color: var(--secondColor);
+    margin-bottom: 10px;
+}
+
+div.section-1 > form > div.nome{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.section-1 > form > div.categoria{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.section-1 > form > div.autor{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.section-1 > form > div.autor > select{
+    width: 290px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+div.section-1 > form > div.editora{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.section-1 > form > div.editora > select{
+    width: 290px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+div.section-1 > form > div.genero{
+    width: 400px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.section-1 > form > div.genero > select{
+    width: 290px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+div.section-1 > form > button{
+    width: 400px;
+    height: 42.5px;
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    transition: 0.3s linear;
+}
+
+div.section-1 > form > button:hover, div.imagem label:hover{
+    color: var(--firstColor);
+    background: var(--secondColor);
+    box-shadow: 0px 0px 10px var(--secondColor);
+    transform: scale(1.05);
+}
+div.imagem{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--secondColor);
+    padding: 20px 0px;
+    gap: 10px;
+}
+div.imagem input[type="file"]::-webkit-file-upload-button{
+    visibility: hidden;
+}
+div.imagem input[type="file"]{
+    text-align: center;
+    content: "Selecione uma imagem";
+}
+div.imagem label{
+    padding: 10px;
+    border: 1.5px solid var(--secondColor);
+    border-radius: 12px;
+    transition: all 0.3s linear;
+}
