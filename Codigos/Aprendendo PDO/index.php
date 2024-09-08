@@ -54,9 +54,9 @@
         echo '<div>
             <img src="'. $oReg['imagem'] .'" alt="obra">
             <h2>'. $oReg['nome'] .'</h2>
-            <img src="../../../../imagens/stars.png" alt="avaliacao" data-n-valor="'. $oReg['codigo'] .'" onClick="fnAvalia(this, event)">
-              </div>';
-
+            <img src="../../img/stars.png" alt="avaliacao" data-n-valor="'. $oReg['codigo'] .'" onClick="fnAvalia(this, event)">
+        </div>';
+        
     }
     
     ?>
