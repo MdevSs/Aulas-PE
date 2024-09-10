@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect("localhost", "root", "", "banco2ds");
+    $con = mysqli_connect("localhost", "root", "", "biblioteca");
     if(isset($_POST["nome"])){
         $nome = $_POST["nome"];
         $categoria = $_POST["categoria"];
@@ -32,6 +32,7 @@
             <div class="border">
                 <div class="content">
                     <div class="content-button">
+                        <a href="../PHP/Home.php" style="width: 20%;">Voltar</a>
                         <button id="switch-button">Cadastrar Novo Acervo</button>
                     </div>
                     <div class="content-images">
@@ -67,8 +68,12 @@
         </div>
 
         <div class="section-1">
+            
+            <h1><button type="menu" id="back"><img src="../IMG/seta-para-a-esquerda.png" alt=""></button><strong>Acervo</strong></h1>
+
             <form method="POST" enctype="multipart/form-data">
-                <h1><strong>Acervo</strong></h1>
+                
+                
 
                 <div class="nome">
                     <input type="text" name="nome" placeholder="nome">

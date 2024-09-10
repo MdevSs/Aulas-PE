@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET["txtNome"])){
         $genero = $_GET["txtNome"];
-        $con = mysqli_connect("localhost", "root", "", "banco2ds");
+        $con = mysqli_connect("localhost", "root", "", "biblioteca");
         $insertGenero = "INSERT INTO genero(nome) VALUES ('$genero')";
         
         mysqli_query($con, $insertGenero);

@@ -7,14 +7,70 @@
     </head>
 
     <body>
-        <div class="header"><img src="../IMG/Logo.png"></div>
+        <div class="header"><img src="../IMG/LogoRoxo.png"></div>
 
-        <form action="../PHP/Login.php">
-            <input type="text" name="txtUsuario" placeholder="Digite seu usuario">
+        <main>
+            <div id="cad">
+                <form method="POST" action="../PHP/Account.php">
+                    <h2>Cadastro</h2>
+                    
+                    <input type="hidden" name="id" value="cad">
 
-            <input type="text" name="txtSenha" placeholder="Digite sua senha">
+                    <input type="text" name="txtNome" placeholder="Digite seu usuario">
+                    
+                    <input type="text" name="txtSenha" placeholder="Digite sua senha">
+                    <button>Cadastrar</button>
 
-            <button>Login</button>
-        </form>
+                    <p>Já tem uma conta? <span class="toogle" onclick="fnToogle(Event)">Faça Login</span></p>
+
+                </form>
+            </div>
+
+            <div id="log" style="display: none;">
+                    
+                <form method="POST" action="../PHP/Account.php">
+
+                    <h2>Login</h2>
+
+                    <input type="hidden" name="id" value="log">
+
+                    <input type="text" name="txtNome" placeholder="Digite seu usuario">
+                    
+                    <input type="text" name="txtSenha" placeholder="Digite sua senha">
+                    <button>Logar</button>
+
+                    <p>Ainda não tem uma conta? <span class="toogle" onclick="fnToogle(Event)">Faça Cadastro</span></p>
+
+                </form>
+            </div>
+        </main>
+
     </body>
+
+    <script>
+
+        oCad = document.querySelector('#cad');
+        oLog = document.querySelector('#log');
+        obtn = document.querySelector('#toogle')
+        oTi = document.querySelector('h2');
+
+        console.log(oCad);
+        console.log(oLog);
+
+        function fnToogle(e){
+            console.log(oCad.style.display);
+            // if(e.target)
+            if(oCad.style.display != 'none'){
+                oCad.style.display = "none";
+                oLog.style.display = "flex";
+                oTi.innerText = "Login";
+            }else{
+                oCad.style.display = "flex";
+                oLog.style.display = "none";
+                oTi.innerText = "Cadastro";
+            }
+        }
+
+    </script>
+
 </html>

@@ -35,8 +35,7 @@ div.header{
 }
 
 div.header > img{
-    width: 90px;
-    height: 90px;
+    height: 70px;
 }
 
 form{
@@ -45,16 +44,21 @@ form{
     background: var(--firstColor);
     border: 1px solid var(--secondColor);
     border-radius: 10px;
+    padding: 30px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: space-between;
     flex-direction: column;
     gap: 60px;
+    box-shadow: 0px 0px 10px #7a2cbf78;
 }
-
-form > input{
-    width: 400px;
-    height: 50px;
+label{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    /* width: 400px;
+    height: 50px; */
     background: var(--firstColor);
     border: 1px solid var(--secondColor);
     border-radius: 10px;
@@ -63,20 +67,20 @@ form > input{
     transition: all 0.3s linear;
 }
 
-form > input::placeholder{
+input::placeholder{
     color: #7b2cbf;
 }
 
-form > input:hover, form > input:focus{
+input:hover, input:focus{
     transform: scale(1.1);
     box-shadow: 0px 0px 4px var(--secondColor);
     color: var(--secondColor);
     outline: none;
 }
 
-form > button{
-    width: 400px;
-    height: 50px;
+form button{
+    /* width: 400px;*/
+    height: 50px; 
     background: var(--firstColor);
     border: 1px solid var(--secondColor);
     border-radius: 10px;
@@ -84,9 +88,22 @@ form > button{
     transition: all 0.3s linear;
 }
 
-form > button:hover{
+form button:hover{
     transform: scale(1.1);
     background: var(--secondColor);
     box-shadow: 0px 0px 4px var(--secondColor);
     color: #eeeeff;
+}
+p{
+    margin: auto;
+}
+p span{
+    color: #3388EE;
+}
+p span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+h2{
+    margin: 0px auto;
 }
