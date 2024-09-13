@@ -72,7 +72,7 @@ input::placeholder{
 }
 
 input:hover, input:focus{
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0px 0px 4px var(--secondColor);
     color: var(--secondColor);
     outline: none;
@@ -85,11 +85,11 @@ form button{
     border: 1px solid var(--secondColor);
     border-radius: 10px;
     color: var(--secondColor);
-    transition: all 0.3s linear;
+    transition: all 0.3s ease;
 }
 
 form button:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     background: var(--secondColor);
     box-shadow: 0px 0px 4px var(--secondColor);
     color: #eeeeff;

@@ -54,15 +54,17 @@ main{
 #formularios article{
     display: flex;
     flex-direction: row;
-    padding: 35px 0px 0px 0px;
+    padding: 35px 70px;
     width: 100%;
-    justify-content: space-around;
+    gap: 15px;
+    justify-content: stretch;
+
 }
 #formularios article a{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    padding: 30px;
     height: 80px;
     background: linear-gradient(135deg, rgba(168,81,242,1) 59%, rgba(109,20,205,1) 87%);
     border-radius: 13px;
@@ -70,10 +72,12 @@ main{
     font-size: x-large;
     text-decoration: none;
     user-select: none;
-    transition: 0.3s ease-in-out;
+    flex-grow: 1.05;
+    transition: all 0.6s ease-out;
 }
 #formularios article a:hover{
-    transform: scale(115%);
+    flex-basis: 10;
+    flex-grow: 1.50;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.551);
 }
 .datas{
