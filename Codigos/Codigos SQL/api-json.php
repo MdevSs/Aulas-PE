@@ -177,13 +177,13 @@
             $oCod=$valor;
             $cSQL="SELECT tbl.nome, IFNULL(CONCAT(CAST((atraso/tbl.total)*100 AS UNSIGNED), '%'), '0%') 'em atraso', IFNULL(CONCAT(CAST((tbl.prazo/tbl.total)*100 AS UNSIGNED), '%'), '0%') 'no prazo'
             FROM (
-                SELECT usuario.nome, COUNT(entregue) total, atraso.atraso, prazo.prazo
+                SELECT usuario.nome, COUNT(devolvido) total, atraso.atraso, prazo.prazo
                 FROM emprestimo
                 LEFT JOIN
-                (SELECT emprestimo.usuario, COUNT(entregue)atraso FROM emprestimo WHERE entregue>datafim AND emprestimo.usuario=$oCod) AS atraso
+                (SELECT emprestimo.usuario, COUNT(devolvido)atraso FROM emprestimo WHERE devolvido>datafim AND emprestimo.usuario=$oCod) AS atraso
                 ON emprestimo.usuario=atraso.usuario
                 LEFT JOIN
-                (SELECT emprestimo.usuario, COUNT(entregue)prazo FROM emprestimo WHERE entregue<datafim AND emprestimo.usuario=$oCod) AS prazo
+                (SELECT emprestimo.usuario, COUNT(devolvido)prazo FROM emprestimo WHERE devolvido<datafim AND emprestimo.usuario=$oCod) AS prazo
                 ON emprestimo.usuario=prazo.usuario
                 LEFT JOIN usuario
                 ON usuario.codigo=emprestimo.usuario
