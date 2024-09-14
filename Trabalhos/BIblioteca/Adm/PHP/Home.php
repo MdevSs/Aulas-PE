@@ -44,7 +44,7 @@
                 <div id="formularios">
                     <h2>Formulários</h2>
                     <article>
-                        <a href="../PHP/Acervo.php" style="background: linear-gradient(190deg, rgb(64, 62, 182) 59%, rgb(66, 20, 205) 87%);">
+                        <a href="../PHP/Acervo.php" style="background: linear-gradient(45deg, rgb(64, 62, 182) 59%, rgb(66, 20, 205) 87%);">
                             <section>
                                 Acervo
                             </section>

@@ -64,7 +64,7 @@ input{
     border-radius: 10px;
     color: var(--secondColor);
     padding: 10px;
-    transition: all 0.3s linear;
+    transition: all 0.3s ease-out;
 }
 
 input::placeholder{

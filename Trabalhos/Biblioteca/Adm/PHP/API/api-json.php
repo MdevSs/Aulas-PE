@@ -1,17 +1,17 @@
 <?php 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     //A turma B nao sabia usar isso, conversei com o um colega da Turma A e ele falou que precisa disso para retornar o resultado em JSON
-    header("Acess-Control-Allowo-Origin:: *");
+    header("Acess-Control-Allow-Origin:: *");
 
     $oCon = new PDO('mysql:host=localhost;dbname=biblioteca','root', '');
     // $oCon = new PDO('mysql:host=localhost;dbname=biblioteca','Aluno02-B', 'Aluno02.2DS');  *conexão com o servidor da escola
-
-    var_dump($oCon);
 
     function fnMostrarLivros()
     {
         global $oCon;
         // deixando a variavel 'global' para reutilizar ela em outros escopos
-
 
         $cSQL="SELECT acervo.codigo, acervo.nome, CONCAT(SUBSTRING_INDEX(autor.nome, ' ', -1), ', ', RTRIM(REPLACE(autor.nome, SUBSTRING_INDEX(autor.nome, ' ', -1), ''))) Autor FROM acervo INNER JOIN autor ON acervo.autor = autor.codigo ORDER BY RAND() LIMIT 10";
         // consulta
@@ -20,47 +20,50 @@
         $oRes=$oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
         // executando a consulta
 
+        $oArray = array();
+        $oArray = $oRes;
+        return json_encode($oArray);
 
         // fazendo uma tabela: APENAS PARA TESTAR SE ESTA FUNCIONANDO
-        echo '<table>
-                <thead>
-                    <tr>
-                        <th> Codigo </th>
-                        <th> Livro </th>
-                        <th> Autor </th>
-                    </tr>
-                </thead>
-            <tbody>';
+        // echo '<table>
+        //         <thead>
+        //             <tr>
+        //                 <th> Codigo </th>
+        //                 <th> Livro </th>
+        //                 <th> Autor </th>
+        //             </tr>
+        //         </thead>
+        //     <tbody>';
 
         // print_r($oRes); saida de Debug
 
         // PARA CADA ELEMENTO DO $oRes, indice $oReg, Valoresna variavel $oLinha
-        foreach($oRes as $oReg => $oLinha)
-        {
-            // print_r($oLinha); saida de debug
+        // foreach($oRes as $oReg => $oLinha)
+        // {
+        //     // print_r($oLinha); saida de debug
 
-            echo '<tr>';
-            // Variavel $oLinha e um array, entao refazemos o foreach
-            foreach($oLinha as $oCampo => $oValor){
+        //     echo '<tr>';
+        //     // Variavel $oLinha e um array, entao refazemos o foreach
+        //     foreach($oLinha as $oCampo => $oValor){
                 
-                echo('<td>'.$oValor.'</td>');
+        //         echo('<td>'.$oValor.'</td>');
                 
-            }
-            echo '</tr>';
-        }
-        // fechou o corpo da tabela e mesma
-        echo '</tbody>
-            </table>';
+        //     }
+        //     echo '</tr>';
+        // }
+        // // fechou o corpo da tabela e mesma
+        // echo '</tbody>
+        //     </table>';
 
         // funcao retornando o resultado da consulta em JSON 
-        return json_encode($oRes);
+        // return json_encode($oRes);
+       
     }
     // EXECUTA A BENDITA
-    fnMostrarLivros();
+    // fnMostrarLivros();
 
 
 
-    echo '<br>';
 
 
 
@@ -79,31 +82,31 @@
 
 
         $oRes=$oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
-        echo '<table>
-                <thead>
-                    <tr>
-                        <th> Livros </th>
-                    </tr>
-                </thead>
-            <tbody>';
-        foreach($oRes as $oReg => $oLinha)
-        {
-            // Mesmo esquema, dois foreachs
-            echo '<tr>';
-            foreach($oLinha as $oCampo => $oValor){
+        // echo '<table>
+        //         <thead>
+        //             <tr>
+        //                 <th> Livros </th>
+        //             </tr>
+        //         </thead>
+        //     <tbody>';
+        // foreach($oRes as $oReg => $oLinha)
+        // {
+        //     // Mesmo esquema, dois foreachs
+        //     echo '<tr>';
+        //     foreach($oLinha as $oCampo => $oValor){
                 
-                echo('<td>'.$oValor.'</td>');
+        //         echo('<td>'.$oValor.'</td>');
                 
-            }
-            echo '</tr>';
-        }
-        echo '
-                    </tbody>
-                </table>';
+        //     }
+        //     echo '</tr>';
+        // }
+        // echo '
+        //             </tbody>
+        //         </table>';
         return json_encode($oRes);
     }
-    fnLivrosParecidos(2);
-    echo '<br>';
+    // fnLivrosParecidos(2);
+    // echo '<br>';
 
 
     // ESSEAQUI é PUNK
@@ -121,7 +124,8 @@
             // 'explodo o vetor' (separa pelas ocorencias de ',' a string do segundo parametro, e joga no vetor que criei)
             // EU POSSO COLOCAR PRA ELE SEPARAR POR ' ' (espaco), mas nao coloquei, futuramente posso 
             $array = explode(",", $oUs);
-        }
+        }else
+            $array[] = $oUs;
 
         // crio OUTRA variavel para guardar os codigos agora
         $ArrCod=[];
@@ -158,32 +162,33 @@
                     $ArrCod[]=$valor;
                 }    
             }
-            echo '<br>';
+        //     echo '<br>';
 
-        echo '<table>
-                    <thead>
-                        <tr>
-                            <th> Usuario </th>
-                            <th> Em Atraso </th>
-                            <th> No Prazo </th>
-                        </tr>
-                    </thead>
-                <tbody>';
+        // echo '<table>
+        //             <thead>
+        //                 <tr>
+        //                     <th> Usuario </th>
+        //                     <th> Em Atraso </th>
+        //                     <th> No Prazo </th>
+        //                 </tr>
+        //             </thead>
+        //         <tbody>';
         
         // Agora neste foreach eu trago enfim a pessoa e as porcentagens
         // utilizando o vetor com cada codigo de usuario 
+        $oRes2 = array();
         foreach($ArrCod as $indice=>$valor){
             // Mais uma variavel desnecessaria
             $oCod=$valor;
             $cSQL="SELECT tbl.nome, IFNULL(CONCAT(CAST((atraso/tbl.total)*100 AS UNSIGNED), '%'), '0%') 'em atraso', IFNULL(CONCAT(CAST((tbl.prazo/tbl.total)*100 AS UNSIGNED), '%'), '0%') 'no prazo'
             FROM (
-                SELECT usuario.nome, COUNT(entregue) total, atraso.atraso, prazo.prazo
+                SELECT usuario.nome, COUNT(devolvido) total, atraso.atraso, prazo.prazo
                 FROM emprestimo
                 LEFT JOIN
-                (SELECT emprestimo.usuario, COUNT(entregue)atraso FROM emprestimo WHERE entregue>datafim AND emprestimo.usuario=$oCod) AS atraso
+                (SELECT emprestimo.usuario, COUNT(devolvido)atraso FROM emprestimo WHERE devolvido>datafim AND emprestimo.usuario=$oCod) AS atraso
                 ON emprestimo.usuario=atraso.usuario
                 LEFT JOIN
-                (SELECT emprestimo.usuario, COUNT(entregue)prazo FROM emprestimo WHERE entregue<datafim AND emprestimo.usuario=$oCod) AS prazo
+                (SELECT emprestimo.usuario, COUNT(devolvido)prazo FROM emprestimo WHERE devolvido<datafim AND emprestimo.usuario=$oCod) AS prazo
                 ON emprestimo.usuario=prazo.usuario
                 LEFT JOIN usuario
                 ON usuario.codigo=emprestimo.usuario
@@ -191,47 +196,60 @@
             ) as tbl;";
 
 
-            $oRes=$oCon->query($cSQL, PDO::FETCH_NUM)->fetchAll();
-
+            $oRes=$oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+            if($oRes[0]['nome'] != null){
+                $oRes2[]=$oRes;
+            }
+            
+            
             //Variavel para saber se a consulta traz registros vazios, eu sei que nao era pra acontecer isso...
             //porem eu tava com pressa, e essa foi a maneira mais rapida de resolver o problema 
-            $show = true;
+            // $show = true;
             // foreach
-            foreach($oRes as $oReg => $oLinha)
-            {
-                echo '<tr>';
-                // pra cada registro eu defino que ela é true, pra resetar ao padrão 
-                $show=true;
-                foreach($oLinha as $oCampo => $oValor){
-                    // Testo se o nome (que por conveniencia é o primeiro valor) é vazio
-                    if($oValor == '')
-                        // se sim deixa a variavel como false
-                        $show=false;
+            // foreach($oRes as $oReg => $oLinha)
+            // {
+            //     echo '<tr>';
+            //     // pra cada registro eu defino que ela é true, pra resetar ao padrão 
+            //     $show=true;
+            //     foreach($oLinha as $oCampo => $oValor){
+            //         // Testo se o nome (que por conveniencia é o primeiro valor) é vazio
+            //         if($oValor == '')
+            //             // se sim deixa a variavel como false
+            //             $show=false;
 
 
-                        // testo se a variavel é true, ou seja, se o registro tem valor
-                    if($show==true)
-                        // se sim eu mostro o campo
-                    echo('<td>'.$oValor.'</td>');
+            //             // testo se a variavel é true, ou seja, se o registro tem valor
+            //         if($show==true)
+            //             // se sim eu mostro o campo
+            //         echo('<td>'.$oValor.'</td>');
                     
-                }
-                echo '</tr>';
+            //     }
+            //     echo '</tr>';
+            // }
+        }
+        if(count($oRes2) == 1){
+            $oRes2 = $oRes2[0];
+        }
+        else{
+            foreach($oRes2 as $indice => $valor)
+            {
+                $oRes2[$indice] = $oRes2[$indice][0];
             }
         }
-        echo '
-                    </tbody>
-                </table>';
+            // echo '
+        //             </tbody>
+        //         </table>';
         // deixo esta variavel global pra reutilizar ela nesse escopo
         global $oRes;
-        return json_encode($oRes);
+        return json_encode($oRes2);
     }
     // Parametro separado por virgula
-    fnRelatorioEmprestimo('Keanu, J');
+    // fnRelatorioEmprestimo('Keanu, J');
 
 
 
 
-    echo '<br><br>';
+    // echo '<br><br>';
 
     // Cansei de comentar
 
@@ -244,75 +262,145 @@
                 WHERE acervo.nome LIKE '%$texto%' OR autor.nome LIKE '%$texto%' OR editora.nome LIKE '%$texto%'";
 
         $oRes=$oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
-        echo '<table>
-                <thead>
-                    <tr>
-                        <th> Codigo </th>
-                        <th> Livro </th>
-                        <th> Autor </th>
-                        <th> Editora </th>
-                    </tr>
-                </thead>
-            <tbody>';
-        foreach($oRes as $oReg => $oLinha)
-        {
-            echo '<tr>';
-            foreach($oLinha as $oCampo){
+        // echo '<table>
+        //         <thead>
+        //             <tr>
+        //                 <th> Codigo </th>
+        //                 <th> Livro </th>
+        //                 <th> Autor </th>
+        //                 <th> Editora </th>
+        //             </tr>
+        //         </thead>
+        //     <tbody>';
+        // foreach($oRes as $oReg => $oLinha)
+        // {
+        //     echo '<tr>';
+        //     foreach($oLinha as $oCampo){
                 
-                echo('<td>'.$oCampo.'</td>');
+        //         echo('<td>'.$oCampo.'</td>');
           
-            }
-            echo '</tr>';
-        }
-        echo '
-                    </tbody>
-                </table>';
+        //     }
+        //     echo '</tr>';
+        // }
+        // echo '
+        //             </tbody>
+        //         </table>';
 
         return json_encode($oRes);
     }
-    fnPesquisa('Não');
+    // fnPesquisa('Não');
 
 
-    echo '<br><br>';
+    // echo '<br><br>';
 
 
     function fnImprestados()
     {
         global $oCon;
         $cSQL="SELECT
-            acervo.nome, autor.nome, editora.nome, COUNT(emprestimo.datainicio) quant 
+            acervo.nome, autor.nome, editora.nome, COUNT(emprestimo.datainicio) AS 'quantidade'
             FROM acervo
             INNER JOIN autor ON autor.codigo = acervo.autor
             INNER JOIN editora ON acervo.editora = editora.codigo
             INNER JOIN emprestimo ON acervo.codigo = emprestimo.acervo
             GROUP BY acervo.nome, autor.nome, editora.nome
-            ORDER BY quant desc";
+            ORDER BY quantidade desc";
 
-        $oRes=$oCon->query($cSQL, PDO::FETCH_NUM)->fetchAll();
-        echo '<table>
-                <thead>
-                    <tr>
-                        <th> Livro </th>
-                        <th> Autor </th>
-                        <th> Editora </th>
-                        <th> Quantidade </th>
-                    </tr>
-                </thead>
-            <tbody>';
-        foreach($oRes as $oReg => $oLinha)
-        {
-            echo '<tr>';
-            foreach($oLinha as $oCampo){
-                    echo('<td>'.$oCampo.'</td>');
+        $oRes=$oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+        // echo '<table>
+        //         <thead>
+        //             <tr>
+        //                 <th> Livro </th>
+        //                 <th> Autor </th>
+        //                 <th> Editora </th>
+        //                 <th> Quantidade </th>
+        //             </tr>
+        //         </thead>
+        //     <tbody>';
+        // foreach($oRes as $oReg => $oLinha)
+        // {
+        //     echo '<tr>';
+        //     foreach($oLinha as $oCampo){
+        //             echo('<td>'.$oCampo.'</td>');
           
-            }
-            echo '</tr>';
-        }
-        echo '
-                    </tbody>
-                </table>';
-
+        //     }
+        //     echo '</tr>';
+        // }
+        // echo '
+        //             </tbody>
+        //         </table>';
         return json_encode($oRes);
     }
-    fnImprestados();
+
+    function fnTabelas(string $nTipo){
+        global $oCon;
+
+        switch($nTipo){
+            case 'usuario':
+                $cSQL = "SELECT codigo, IF(acesso = 1, 'Usuario', 'Admin') acesso, nome FROM usuario";
+
+                $oConsulta = $oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+
+                return json_encode($oConsulta);
+            break;
+
+            case 'acervo':
+                $cSQL = "SELECT * FROM acervo";
+
+                $oConsulta = $oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+
+                return json_encode($oConsulta);
+            break;
+
+            case 'autor':
+                $cSQL = "SELECT * FROM autor";
+
+                $oConsulta = $oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+
+                return json_encode($oConsulta);
+            break;
+
+            case 'emprestimo':
+                $cSQL = "SELECT emprestimo.codigo, usuario.nome usuario, acervo.nome livro, DATE_FORMAT(datainicio, '%d/%m/%Y') as 'pegou', DATE_FORMAT(datafim, '%d/%m/%Y') as 'vai até', IFNULL(DATE_FORMAT(devolvido, '%d/%m/%Y'), 'Não devolveu') as 'devolvido' FROM emprestimo LEFT JOIN usuario ON usuario.codigo=emprestimo.usuario LEFT JOIN acervo ON acervo.codigo=emprestimo.acervo";
+
+                $oConsulta = $oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+
+                return json_encode($oConsulta);
+            break;
+        }
+    }
+
+    // fnImprestados();
+
+    switch($_GET['nTipo']){
+        case 1:
+            echo fnTabelas($_GET['txtTabela']);
+        case 2:
+            switch($_GET['nFuncao']){
+                case 1:
+                    echo fnMostrarLivros();
+                break;
+
+                case 2:
+                    echo fnLivrosParecidos($_GET['txtParametro']);
+                break;
+                
+                case 3:
+                    echo fnRelatorioEmprestimo($_GET['txtParametro']);
+                break;
+
+                case 4:
+                    echo fnPesquisa($_GET['txtParametro']);
+                    break;
+
+                case 5:
+                    echo fnImprestados();
+                break;
+
+                default:
+                    
+                break;
+            }
+            break;
+    }
 ?>

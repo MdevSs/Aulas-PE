@@ -35,7 +35,7 @@
             // $oReg = $oCon -> query($cSQL);
             // $oReg = $oReg -> fetchAll(PDO::FETCH_ASSOC);
 
-            // $oReg = $oCon -> query($cSQL)->fetchAll(PDO::FTECH_ASSOC);
+            $oReg = $oCon -> query($cSQL)->fetchAll(PDO::FTECH_ASSOC);
             
             // PDO::FETCH_ASSOC
             // PDO::FETCH_NUM
