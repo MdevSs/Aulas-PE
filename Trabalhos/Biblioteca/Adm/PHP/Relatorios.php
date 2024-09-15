@@ -10,7 +10,6 @@
     <main>
         <!-- barra lateral -->
         <div class="side-bar">
-            <button>  </button>
             <button class="openButton"><i class="fa-solid fa-chevron-right"></i></button>
             <!-- tabelas -->
             <div class="tables">
@@ -32,28 +31,64 @@
                     Mostrar Obras 
                 </button>
 
-                <button class="search relatorio off">
+                <button class="toogle-button relatorio off" value="1" data-tipo="5">
+                    <i class="fa-solid fa-circle"></i> 
+                    Mais Imprestados
+                </button>
+
+                <button class="search relatorio">
+                    <div class="search-header">
+                        
+                        <span> <i class="fa-solid fa-circle"></i> Livros Relacionados</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
                     <form>
-                        <input data-tipo="2" type="search" placeholder="Digite o código de um Livro">
+                        
+                        <!-- <input data-tipo="2" type="search" placeholder="Digite o código de um Livro"> -->
+                         <select data-tipo="2" class="relatorio">
+                            <?php
+                            
+                                $oCon = new PDO('mysql: host=localhost; dbname=biblioteca', 'root', '');
+
+                                $cSQL = "SELECT codigo, nome FROM acervo";
+
+                                $oRes = $oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+
+                                foreach($oRes as $indice => $valor)
+                                {
+                                    echo '<option value='. $valor['codigo'] .'>'. $valor['nome'] .'</option>';
+                                }
+
+                            ?>
+                         </select>
                     </form>
                 </button>
 
-                <button class="search relatorio off">
+                <button class="search relatorio">
+                    <div class="search-header">
+                        
+                        <span> <i class="fa-solid fa-circle"></i>Porcentagem de emprestimo</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+
                     <form>
                         <input data-tipo="3" type="search" placeholder="Digite o nome do(s) Usuario">
                     </form>
                 </button>
 
-                <button class="search relatorio off">
+                <button class="search relatorio">
+                    <div class="search-header">
+                        
+                        <span> <i class="fa-solid fa-circle"></i> Livros Relacionados</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+
                     <form>
                         <input data-tipo="4" type="search" placeholder="Pesquise o nome de algo">
                     </form>
                 </button>
                 
-                <button class="toogle-button relatorio off" value="1" data-tipo="5">
-                    <i class="fa-solid fa-circle"></i> 
-                    Mais Imprestados
-                </button>
+                
                 <!-- <button><i class="fa-solid fa-circle"></i> Livros Parecidos </button> -->
                 <!-- <button><i class="fa-solid fa-circle"></i> Emprestimos </button> -->
 
@@ -78,11 +113,9 @@
                 <!-- itens que apareceram na requisição -->
                 <div class="content-itens">
                     <?php
-                    
-                        $oCon = new PDO('mysql: host=localhost; dbname=biblioteca', 'root', '');
 
                         $cSQL = "SELECT codigo, acesso, nome FROM usuario;";
-
+                        global $oCon;
                         $oRes = $oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
 
                         echo '<table>
@@ -120,7 +153,7 @@
 
                         // var_dump($oRes);
 
-                        
+                        $oCon = null;
                     
                     ?>
                 </div>

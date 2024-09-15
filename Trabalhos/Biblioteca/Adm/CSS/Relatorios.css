@@ -18,6 +18,7 @@ body{
     width: 100vw;
     height: 100vh;
     background: url('../IMG/FundoBranco.png');
+    overflow: hidden;
 }
 main{
     display: flex;
@@ -39,6 +40,8 @@ main{
     justify-content: stretch;
     width: 22%;
     transition: all 0.6s ease-out;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .content{
@@ -90,15 +93,22 @@ main{
     user-select: none;
 }
 .search{
-    padding: 40px 20px 40px 20px;
+    padding: 0px;
+    height:70px;
+    display: inherit;
+    flex-direction: column;
+    overflow-y: hidden;
+    gap: 0px;
 }
 
-.toogle-button.tables:hover, .toogle-button.relatorio:hover, .search:hover{
+.toogle-button.tables:hover, .toogle-button.relatorio:hover{
     background-color: #652785;
     flex-grow: 1.5;
     flex-shrink: 10;
 }
-
+.search:hover{
+    background-color: #00AA00;
+}
 .content-bar{
     display: inherit;
     padding-top: 20px;
@@ -124,10 +134,15 @@ button.toogleOn{
 }
 form{
     height: 100%;
-    width: 500px;
+    width: 100%;
     display: inherit;
     align-items: center;
     justify-content: stretch;
+}
+.search form{
+    padding: 20px 20px 30px 20px;
+    width: 100%;
+    background-color: #310a42;
 }
 form input{
     border: 1px solid var(--roxo);
@@ -223,4 +238,70 @@ button.openButton i{
 }
 .closeButton{
     transform: translate(none);
+}
+button.search .search-header{
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    gap:18px;
+    padding: 10px 0px;
+    background-color: #17001a;
+    justify-content: space-between;
+    z-index: 1;
+
+}
+.search-header span{
+    font-size: 13px;
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+.search-header i.fa-chevron-right{
+    width: 50px;
+    height: 50px;
+    justify-self: flex-end;
+    text-align: center;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transform: rotate(90deg);
+    border-radius: 7px;
+    transition: all 0.3s ease-out;
+}
+.search-header i.fa-circle{
+    padding-left: 20px;
+    font-size: 14px;
+}
+.search-header i.fa-chevron-right:hover{
+    background-color: #1c022a;
+}
+.show{
+    height: 180px;
+}
+select{
+    width: 100%;
+    padding: 20px;
+    background-color: #a582b5;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    z-index: 0;
+}
+select:focus{
+    outline: none;
+}
+select option{
+    background-color: var(--roxo);
+    color: white;
+    border-radius: 30px;
+    border: none;
+    margin-top: 30px;
+}
+&:hover{
+    background-color: var(--white);
+    color: var(--roxo);
 }

@@ -114,4 +114,22 @@
         })
     })
 
+    document.querySelectorAll('.search .search-header i.fa-chevron-right').forEach(elemento =>{
+        console.log(elemento);
+        elemento.addEventListener('click', (e)=>{
+            if(e.target.style.transform == 'rotate(90deg)')
+                e.target.style.transform = 'rotate(0deg)';
+            else
+                e.target.style.transform = 'rotate(90deg)';
 
+            e.target.parentElement.parentElement.classList.toggle('show');
+        });
+    })
+
+    document.querySelector('select').addEventListener('change', (e)=>{
+        console.log('Mudow');
+        console.log(e);
+        console.log(e.target);
+        console.log(e.target.value);
+        fnAjax(e.target);
+    });
