@@ -1,24 +1,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../CSS/Login.css">
-        <link rel="shortcut icon" href="../IMG/Logo.png">
+        <link rel="stylesheet" href="Adm/CSS/Login.css">
+        <link rel="shortcut icon" href="Adm/IMG/Logo.png">
         <title>The Library | Login</title>
     </head>
 
     <body>
-        <div class="header"><img src="../IMG/LogoRoxo.png"></div>
+        <div class="header"><img src="Adm/IMG/LogoRoxo.png"></div>
 
         <main>
             <div id="cad">
-                <form method="POST" action="../PHP/Account.php">
+                <form method="POST" action="Adm/PHP/Account.php">
                     <h2>Cadastro</h2>
                     
                     <input type="hidden" name="id" value="cad">
 
                     <input type="text" name="txtNome" placeholder="Digite seu usuario">
                     
-                    <input type="text" name="txtSenha" placeholder="Digite sua senha">
+                    <input type="password" name="txtSenha" placeholder="Digite sua senha">
                     <button>Cadastrar</button>
 
                     <p>Já tem uma conta? <span class="toogle" onclick="fnToogle(Event)">Faça Login</span></p>
@@ -28,7 +28,7 @@
 
             <div id="log" style="display: none;">
                     
-                <form method="POST" action="../PHP/Account.php">
+                <form method="POST" action="Adm/PHP/Account.php">
 
                     <h2>Login</h2>
 
@@ -36,7 +36,7 @@
 
                     <input type="text" name="txtNome" placeholder="Digite seu usuario">
                     
-                    <input type="text" name="txtSenha" placeholder="Digite sua senha">
+                    <input type="password" name="txtSenha" placeholder="Digite sua senha">
                     <button>Logar</button>
 
                     <p>Ainda não tem uma conta? <span class="toogle" onclick="fnToogle(Event)">Faça Cadastro</span></p>

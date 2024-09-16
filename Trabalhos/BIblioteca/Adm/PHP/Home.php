@@ -44,20 +44,25 @@
                 <div id="formularios">
                     <h2>Formulários</h2>
                     <article>
-                        <a href="../PHP/Acervo.php">
+                        <a href="../PHP/Acervo.php" style="background: linear-gradient(45deg, rgb(64, 62, 182) 59%, rgb(66, 20, 205) 87%);">
                             <section>
                                 Acervo
                             </section>
                         </a>
-                        <a href="../PHP/Usuario.php">
+                        <a href="../PHP/Usuario.php" style="background: linear-gradient(10deg, rgb(40, 84, 105) 10%, rgb(20, 150, 205) );">
                             <section>
                                 Usuario
                             </section>
                         </a>
                 
-                        <a href="../PHP/Emprestimo.php">
+                        <a href="../PHP/Emprestimo.php" style="background: linear-gradient(90deg, rgb(20, 83, 53) 10%, rgb(60, 205, 20) );">
                             <section>
                                 Emprestimo
+                            </section>
+                        </a>
+                        <a href="../PHP/Relatorios.php" style="background: linear-gradient(90deg, rgb(72, 85, 38) 10%, rgb(205, 165, 20) );">
+                            <section>
+                                Relatórios
                             </section>
                         </a>
                     </article>
