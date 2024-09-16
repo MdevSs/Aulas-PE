@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --firstColor: #eeeeff;
+    --secondColor: #7b2cbf;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    background: url('../IMG/FundoBranco.png');
+    overflow-x: hidden;
+}
+
+.livro{
+    background-color: #FAFAFA;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 3px solid var(--secondColor);
+}
+.livro img[src="../IMG/stars.png"]{
+    background: linear-gradient(to right, #FFF000 0%, tranparent 0%);
+    transform: scale(80%);
+}
+.livro:hover{
+    box-shadow: 0px 0px 5px var(--secondColor),
+    0px 0px 8px var(--secondColor);
+    /* border: 5px solid var(--secondColor); */
+}
+.livro img[src="../IMG/stars.png"]:hover{
+    transform: scale(70%);
+}
+header{
+    width: 100vw;
+    min-height: 10vh;
+    padding: 30px;
+    background-color:var(--secondColor);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    color: var(--firstColor);
+    user-select: none;
+    border-bottom: 4px solid #FAFAFA;
+}
+header img{
+    width: 50px;
+    height: 50px;
+}
+main{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    padding: 40px 100px 100px;
+    background-color: #5b5b8c3a;
+    backdrop-filter: blur(1px);
+    gap: 30px;
+}
+main a img{
+    width: 80px;
+    height: 80px;
+    background-color: #fafafa;
+    border: 2px solid var(--secondColor);
+    border-radius: 50%;
+}
+main a{
+    width: min-content;
+    border-radius: 50%;
+}
+main a:hover{
+    transform: scale(105%);
+    box-shadow: 0px 0px 20px var(--secondColor);
+}
+/* section{
+    display: inherit;
+    padding: 40px;
+    justify-content: space-evenly;
+    gap: 15px;
+    overflow-x: scroll;
+    background-color: #7b2cbf;
+} */
+ section{
+    width: 100vw;
+    display: inherit;
+    padding: 40px;
+    justify-content: space-evenly;
+    gap: 20px;
+    background-color: #FAFAFA;
+    width: 100%;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    border:  3px solid var(--secondColor);
+ }

@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --roxo: #7b2cbf;
+    --white: #fafafa;
+    --azul: #eeeeff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    font-family: Poppins;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background: url('../IMG/FundoBranco.png');
+    overflow: hidden;
+}
+main{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: stretch;
+}
+/* main > div{
+    flex-grow: 1;
+} */
+.side-bar{
+    background-color: #322547;
+    padding: 12px 30px 10px 12px;
+    color: var(--azul);
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 22%;
+    transition: all 0.6s ease-out;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.content{
+    align-self: stretch;
+    flex-grow: auto;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;    
+    background-color: #eeeeff80;
+    backdrop-filter: blur(10px);
+    flex-grow: 1;
+    transition: all 0.6s ease-out;
+}
+.side-bar .tables, .reports{
+    width: 100%;
+    display: inherit;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 6px;
+    padding: 15px;
+    /* opacity: 1; */
+    transition: all 0.6s ease-out;
+}
+.side-bar .tables:hover, .reports:hover{
+    background-color: #3d2d56;
+}
+.tables .tables-buttons{
+    display: inherit;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: stretch;
+}
+.tables-buttons button.toogle-button, .reports button.toogle-button, .search{
+    overflow: hidden;
+    display: inherit;
+    border-radius: 7px;
+    border: none;
+    background-color: #17001a;
+    height: 45px;
+    text-align: left;
+    padding: 0px 0px 0px 20px;
+    color: var(--white);
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: 1.05;
+    transition: all 0.3s ease-out;
+    user-select: none;
+}
+.search{
+    padding: 0px;
+    height:70px;
+    display: inherit;
+    flex-direction: column;
+    overflow-y: hidden;
+    gap: 0px;
+}
+
+.toogle-button.tables:hover, .toogle-button.relatorio:hover{
+    background-color: #652785;
+    flex-grow: 1.5;
+    flex-shrink: 10;
+}
+.search:hover{
+    background-color: #00AA00;
+}
+.content-bar{
+    display: inherit;
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    flex-grow: 1;
+}
+button.toogleOn{
+    color: var(--roxo);
+    background-color: var(--azul);
+    flex-grow: 1.5;
+    flex-shrink: 10;
+    transition: all 0.3s ease-out;
+}
+.filters{
+    align-self: center;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+form{
+    height: 100%;
+    width: 100%;
+    display: inherit;
+    align-items: center;
+    justify-content: stretch;
+}
+.search form{
+    padding: 20px 20px 30px 20px;
+    width: 100%;
+    background-color: #310a42;
+}
+form input{
+    border: 1px solid var(--roxo);
+    border-radius: 50px;
+    width: 100%;
+    height: 50px;
+    padding: 10px 10px 10px 60px;
+    outline: 1px solid var(--roxo);
+    font-size: 20px;
+}
+.search form input{
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #0000056f;
+    color: var(--azul);
+    transition: all 0.4s ease-out;
+    text-align: center;
+    font-size: 15px;
+}
+.search form input:hover,.search form input:focus{
+    border-color: #00AA00;
+    border-width: 2px;
+    outline: #00AA00;
+}
+.filters i{
+    color: var(--roxo);
+    font-size: 40px;
+    position: relative;
+    right: -57px;
+}
+.content-itens{
+    background-color: #f5f5fd;
+    width: 100%;
+    border-radius: 20px 20px 0px 0px;
+    margin: 30px 0px 0px 0px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+.content-itens table{
+    width: 100%;
+    border-collapse: collapse;
+    user-select: none;
+}
+tr,th, td{
+    border: 1px solid black;
+    text-align: left;
+    padding: 20px 20px 20px 30px;
+}
+th{
+    background-color: #29052e;
+    color: var(--azul);
+    text-align: center;
+}
+tr td:first-child{
+    text-align: right;
+}
+table tbody tr:nth-of-type(odd){
+    background-color: #fafafa;
+    color: #17001a;
+}
+table tbody tr:nth-of-type(even){
+    color: #17001a;
+    background-color: #d2d2d2;
+}
+
+td:nth-child(2){
+    text-align: left;
+}
+button.openButton{
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #322547;
+    color: var(--white);
+    position: absolute;
+    transform: translate(20vw);
+    z-index: 1;
+    border-radius: 5px;
+    transition: all 0.5s ease-out;
+}
+button.openButton:hover{
+    background-color: #524b84;
+}
+button.openButton i{
+    transform: rotate(180deg);
+    transition: all 0.3s ease-out;
+}
+.close{
+    width: 0%;
+}
+.invisible{
+    opacity: 0;
+}
+.closeButton{
+    transform: translate(none);
+}
+button.search .search-header{
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    gap:18px;
+    padding: 10px 0px;
+    background-color: #17001a;
+    justify-content: space-between;
+    z-index: 1;
+
+}
+.search-header span{
+    font-size: 13px;
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+.search-header i.fa-chevron-right{
+    width: 50px;
+    height: 50px;
+    justify-self: flex-end;
+    text-align: center;
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transform: rotate(90deg);
+    border-radius: 7px;
+    transition: all 0.3s ease-out;
+}
+.search-header i.fa-circle{
+    padding-left: 20px;
+    font-size: 14px;
+}
+.search-header i.fa-chevron-right:hover{
+    background-color: #1c022a;
+}
+.show{
+    height: 180px;
+}
+select{
+    width: 100%;
+    padding: 20px;
+    background-color: #a582b5;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    z-index: 0;
+}
+select:focus{
+    outline: none;
+}
+select option{
+    background-color: var(--roxo);
+    color: white;
+    border-radius: 30px;
+    border: none;
+    margin-top: 30px;
+}
+&:hover{
+    background-color: var(--white);
+    color: var(--roxo);
+}
