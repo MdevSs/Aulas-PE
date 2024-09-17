@@ -294,17 +294,37 @@
     // echo '<br><br>';
 
 
-    function fnImprestados()
+    function fnImprestados(int $value)
     {
         global $oCon;
-        $cSQL="SELECT
-            acervo.nome, autor.nome, editora.nome, COUNT(emprestimo.datainicio) AS 'quantidade'
+        switch($value)
+        {
+            case 1:
+                $cSQL="SELECT
+            acervo.nome, autor.nome autor, editora.nome editora, COUNT(emprestimo.datainicio) AS 'quantidade'
             FROM acervo
             INNER JOIN autor ON autor.codigo = acervo.autor
             INNER JOIN editora ON acervo.editora = editora.codigo
             INNER JOIN emprestimo ON acervo.codigo = emprestimo.acervo
             GROUP BY acervo.nome, autor.nome, editora.nome
             ORDER BY quantidade desc";
+                break;
+
+            case 2:
+                
+                $cSQL = "SELECT
+                acervo.nome, autor.nome autor, editora.nome editora, COUNT(emprestimo.datainicio) AS 'quantidade'
+                FROM acervo
+                INNER JOIN autor ON autor.codigo = acervo.autor
+                INNER JOIN editora ON acervo.editora = editora.codigo
+                INNER JOIN emprestimo ON acervo.codigo = emprestimo.acervo
+                WHERE devolvido IS NOT NULL
+                GROUP BY acervo.nome, autor.nome, editora.nome
+                ORDER BY quantidade desc;";        
+                
+                break;
+        }
+        
 
         $oRes=$oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
         // echo '<table>
@@ -394,7 +414,7 @@
                     break;
 
                 case 5:
-                    echo fnImprestados();
+                    echo fnImprestados($_GET['txtParametro']);
                 break;
 
                 default:
