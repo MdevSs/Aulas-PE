@@ -31,9 +31,25 @@
                     Mostrar Obras 
                 </button>
 
-                <button class="toogle-button relatorio off" value="1" data-tipo="5">
-                    <i class="fa-solid fa-circle"></i> 
-                    Mais Imprestados
+                <button class="search relatorio off" value="1">
+                    <div class="search-header">
+                        
+                        <span> <i class="fa-solid fa-circle"></i> Mais Imprestados</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+
+                    <form id="form-radios">
+                        <label for="">
+                            <span>Somente Imprestados</span>
+                            <input type="radio" class="relatorio" name="type" value="1" data-tipo="5">
+                        </label>
+                        
+                        <label for="">
+                            <span>Imprestados e Devolvidos</span>
+                            <input type="radio" class="relatorio" name="type" value="2" data-tipo="5">
+                        </label>
+                    </form>
+                    
                 </button>
 
                 <button class="search relatorio">
@@ -79,13 +95,33 @@
                 <button class="search relatorio">
                     <div class="search-header">
                         
-                        <span> <i class="fa-solid fa-circle"></i> Livros Relacionados</span>
+                        <span> <i class="fa-solid fa-circle"></i> Pesquisa</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
                     <form>
                         <input data-tipo="4" type="search" placeholder="Pesquise o nome de algo">
                     </form>
+                </button>
+
+                <button class="search relatorio" id="Emprestimo">
+                    <div class="search-header">
+                        
+                        <span> <i class="fa-solid fa-circle"></i> Emprestimo</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+
+                    <form data-tipo="6" id="form-emprestimo">
+
+                        <label for="">Selecione o Intervalo</label>
+                        <div class="interval">
+                            <input type="date">
+                            <input type="date">
+                        </div>
+
+                        <div id="button-submit">Gerar</div>
+                    </form>
+
                 </button>
                 
                 

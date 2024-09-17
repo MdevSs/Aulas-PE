@@ -9,11 +9,13 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    
+    box-sizing: border-box;    
     font-family: Poppins;
 }
-
+*::selection{
+    background-color: #3225479c;
+    color: var(--white);
+}
 body{
     width: 100vw;
     height: 100vh;
@@ -280,7 +282,7 @@ button.search .search-header{
     background-color: #1c022a;
 }
 .show{
-    height: 180px;
+    height: 190px;
 }
 select{
     width: 100%;
@@ -304,4 +306,55 @@ select option{
 &:hover{
     background-color: var(--white);
     color: var(--roxo);
+}
+#form-radios{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+}
+#form-radios label{
+    display: inherit;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 80%;
+    gap: 22px;
+    justify-content: flex-end;
+    font-size: 15px;
+    padding: 0px 0px 0px 20px;
+}
+#form-radios label input[type="radio"]{
+    height: 20px;
+    width: 20px;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+#form-emprestimo{
+    display: inherit;
+    flex-direction: column;
+    overflow-y: auto;   
+}
+#Emprestimo.show{
+    height: 320px;
+    
+}
+#form-emprestimo .interval{
+    margin-top: 10px;
+    display: inherit;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+#button-submit{
+    width: 60%;
+    background-color: var(--azul);
+    color: var(--roxo);
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
 }

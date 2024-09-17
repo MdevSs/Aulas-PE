@@ -133,3 +133,18 @@
         console.log(e.target.value);
         fnAjax(e.target);
     });
+
+    document.querySelectorAll('input[type="radio"]').forEach(element =>{
+        element.addEventListener('change', (e)=>{
+            console.log(e.target);
+            fnAjax(e.target);
+        })
+    });
+
+    document.querySelector('#button-submit').addEventListener('click', (e)=>{
+        let dtValores = document.querySelectorAll('.interval input');
+
+        dtValores.forEach(valor =>{
+            console.log(valor.value);
+        })
+    });
