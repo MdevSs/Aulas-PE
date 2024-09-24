@@ -353,6 +353,36 @@
         return json_encode($oRes);
     }
 
+
+    function fnEmprestimo(array $data){
+        global $oCon;
+
+        $cSQL="SELECT emprestimo.codigo, usuario.nome, acervo.nome, DATE_FORMAT(datainicio, '%d/%m/%Y') as 'data emprestimo'
+        , DATE_FORMAT(datafim, '%d/%m/%Y') 'data devolver', DATE_FORMAT(devolvido, '%d/%m/%Y') as 'devolvido' FROM `emprestimo` LEFT JOIN usuario ON usuario.codigo=emprestimo.usuario LEFT JOIN acervo ON acervo.codigo=emprestimo.acervo WHERE 1=1 ";
+
+        foreach($data as $index => $value){
+            if($index=="date"){
+                    $valores = $data['date'];
+                    if(isset($valores['datainicio'])) {
+                        $cSQL .= "AND datainicio = $valores[datainicio] ";
+                    }
+                    if(isset($valores['datafim'])){
+                        $cSQL .= "AND datafim = $valores[datafim] ";
+                    }
+                }
+            if($index=="atrasados"){
+                    $cSQL .= "AND devolvido>datafim OR DATE_FORMAT(NOW(), '%Y-%m-%d')>datafim ";
+            }
+
+            if($index="today"){
+                    $cSQL .= "AND datainicio=DATE_FORMAT(NOW(), '%Y-%m-%d') OR datafim=DATE_FORMAT(NOW(), '%Y-%m-%d') OR devolvido=DATE_FORMAT(NOW(), '%Y-%m-%d') ";
+            }
+            $oRes=$oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
+            return json_encode($oRes);
+        }
+    }
+
+
     function fnTabelas(string $nTipo){
         global $oCon;
 
@@ -417,6 +447,13 @@
                 case 5:
                     echo fnImprestados($_GET['txtParametro']);
                 break;
+
+
+                case 6:
+                    $data = {
+                    };
+                    echo fnEmprestimo($_GET['atrasados']);
+                    break;
 
                 default:
                     

@@ -103,7 +103,7 @@
         
     })
 
-    document.querySelectorAll('.reports .search form').forEach(element =>{
+    document.querySelectorAll('.reports .search .form-relatorio').forEach(element =>{
         element.addEventListener('submit', (e)=>{
             e.preventDefault();
             console.log(e.target);
@@ -157,3 +157,48 @@
     document.querySelectorAll('input[name="optRange"]')[1].addEventListener('click', ()=>{
         document.querySelector('.interval-range').classList.remove('down');
     })
+
+    document.querySelector('#form-emprestimo').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        console.log("enviou");
+        let data={};
+        if(document.querySelector('input#RangeData').checked){
+            data.date={};
+            if(document.querySelector('#datainicio').value!=""){
+                data.date.datainicio =  document.querySelector('#datainicio').value;
+                
+            }else{
+                data.date.datainicio = null;
+            }
+
+            if(document.querySelector('#datafim').value!=""){
+                data.date.datafim = document.querySelector('#datafim').value;
+            }else{
+                data.date.datafim = null
+                
+            }   
+        }
+
+        if(document.querySelector('input[name="optAtrasados"]').checked) {
+
+            data.atrasados = true;
+
+        }
+
+        if(document.querySelector('input#RangeToday').checked) {
+            data.today = true;
+        }
+        console.log(data);
+        let par = new URLSearchParams(data).toString();
+        console.log(par);
+        console.log(typeof data === 'object' && data !== null);
+        console.log(`API/api-json.php?nTipo=2&txtTabela=null&nFuncao=6&txtParametro=${JSON.stringify(data)}`);
+        fetch(`API/api-json.php?nTipo=2&txtTabela=null&nFuncao=6&${par}`)
+        .then(response=>response.json())
+        .then(data => {
+            oDadosAjax = data;
+                console.log(oDadosAjax);
+                MostraDados(oDadosAjax);
+            }).catch(error => console.error('Erro:'+ error));
+        });
+    

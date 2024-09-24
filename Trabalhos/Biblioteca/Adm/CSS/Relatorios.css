@@ -241,7 +241,7 @@ button.openButton i{
 .closeButton{
     transform: translate(none);
 }
-button.search .search-header{
+button.search .search-header, div.search .search-header{
     display: inherit;
     flex-direction: row;
     align-items: center;
