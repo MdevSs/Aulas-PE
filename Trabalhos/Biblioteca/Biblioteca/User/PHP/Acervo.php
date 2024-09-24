@@ -1,7 +1,7 @@
 <?php 
     try{
         // var = new PDO('mysqli: host = ip/localhost; dbname = nome do banco', 'usuario', 'senha')
-        $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02', 'Aluno02-B', 'Aluno02.2DS');
+        $oCon = new PDO('mysql: host=localhost; dbname=biblioteca', 'root', '');
     } catch(PDOException $oErro) {
         die($oErro -> getMessage());
     }
@@ -35,7 +35,7 @@
             // $oReg = $oCon -> query($cSQL);
             // $oReg = $oReg -> fetchAll(PDO::FETCH_ASSOC);
 
-            // $oReg = $oCon -> query($cSQL)->fetchAll(PDO::FTECH_ASSOC);
+            $oReg = $oCon -> query($cSQL)->fetchAll(PDO::FTECH_ASSOC);
             
             // PDO::FETCH_ASSOC
             // PDO::FETCH_NUM
@@ -75,15 +75,15 @@
 
             let nPontos = 0;
 
-            if(nPor < 20)
+            if(nPor<20 && nPor>0)
                 nPontos = 1;
-            else if(nPor < 40)
+            else if(nPor<40)
                 nPontos = 2;
-            else if(nPor < 60)
+            else if(nPor<60)
                 nPontos = 3;
-            else if(nPor < 80)
+            else if(nPor<80)
                 nPontos = 4;
-            else if(nPor < 100)
+            else
                 nPontos = 5;
 
             
@@ -98,7 +98,10 @@
             oForm.append("nNota", nPontos);
 
 
-            fetch('avaliar.php', {'method': 'POST', 'body': oForm})
+            fetch('avaliar.php', {
+                'method': 'POST',
+                'header': {'Content-Type': 'application/json'},
+                'body': oForm})
                 .then(oResposta=>oResposta.json())
                 .then(oRes=>console.log(JSON.parse(oRes)))
                 .catch(oError=>console.log(oError));

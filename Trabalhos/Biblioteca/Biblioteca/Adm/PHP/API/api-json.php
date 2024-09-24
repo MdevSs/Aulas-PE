@@ -1,11 +1,11 @@
 <?php 
-    // ini_set('display_errors', 1);
-    // ini_set('display_startup_errors', 1);
-    // error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     //A turma B nao sabia usar isso, conversei com o um colega da Turma A e ele falou que precisa disso para retornar o resultado em JSON
     header("Acess-Control-Allow-Origin:: *");
 
-    $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02', 'Aluno02-B', 'Aluno02.2DS');
+    $oCon = new PDO('mysql:host=localhost;dbname=biblioteca','root', '');
     // $oCon = new PDO('mysql:host=localhost;dbname=biblioteca','Aluno02-B', 'Aluno02.2DS');  *conexão com o servidor da escola
 
     function fnMostrarLivros()
@@ -119,7 +119,7 @@
 
 
         // Testo pra saber se alguem digitou uma virgula
-        if(strpos($oUs, ',') != 0)
+        if(str_contains($oUs,',')==true)
         {
             // 'explodo o vetor' (separa pelas ocorencias de ',' a string do segundo parametro, e joga no vetor que criei)
             // EU POSSO COLOCAR PRA ELE SEPARAR POR ' ' (espaco), mas nao coloquei, futuramente posso 
@@ -196,10 +196,9 @@
                 GROUP BY usuario.nome, atraso.atraso, prazo.prazo
             ) as tbl";
 
-            $oRes=$oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
-            
-            $oNome = $oRes[0];
-            if($oNome['nome'] != null){
+
+            $oRes=$oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);
+            if($oRes[0]['nome'] != null){
                 $oRes2[]=$oRes;
             }
             

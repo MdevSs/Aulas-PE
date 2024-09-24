@@ -1,7 +1,8 @@
 <?php
-        $oCon = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
-        
+        // $oCon = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
+        $oCon = mysqli_connect('localhost', 'root', '', 'biblioteca');
         $oCmd = "SELECT COUNT(DATAINICIO), ACERVO.NOME, CONCAT('rgb(', FLOOR(RAND()*255), ', ', FLOOR(RAND()*255), ', ', FLOOR(RAND()*255), ', 0.5)') FROM EMPRESTIMO LEFT JOIN ACERVO ON ACERVO = ACERVO.CODIGO GROUP BY NOME";
+
 
         $oRes = mysqli_query($oCon, $oCmd);
         

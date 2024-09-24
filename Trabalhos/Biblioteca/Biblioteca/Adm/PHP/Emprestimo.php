@@ -4,7 +4,7 @@
         $acervo = $_GET["txtAcervo"];
         $inicio = $_GET["dtInicio"];
         $fim = $_GET["dtFim"];
-        $con = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
+        $con = mysqli_connect('localhost', 'root', '', 'biblioteca');
         $insert = "INSERT INTO emprestimo(usuario, acervo, datainicio, datafim) VALUES('$cliente', '$acervo', '$inicio', '$fim')";
         mysqli_query($con, $insert);
         mysqli_close($con);
@@ -27,7 +27,7 @@
                     <div class="cliente">
                         <select name="txtUsuario">
                             <?php
-                                $con = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
+                                $con = mysqli_connect('localhost', 'root', '', 'biblioteca');
                                 $select = "SELECT * FROM usuario";
                                 $res = mysqli_query($con, $select);
                                 while($row = mysqli_fetch_assoc($res)) {
@@ -40,7 +40,7 @@
                     <div class="acervo">
                         <select name="txtAcervo">
                             <?php
-                                $con = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
+                                $con = mysqli_connect('localhost', 'root', '', 'biblioteca');
                                 $select = "SELECT * FROM acervo";
                                 $res = mysqli_query($con, $select);
                                 while ($row = mysqli_fetch_assoc($res)) {

@@ -6,12 +6,12 @@
         $oBairro = $_GET['oBairro'];
         $oCidade = $_GET['oCidade'];
         $oEstado = $_GET['oEstado'];
-        $oConGRUPO02 = mysqli_connect('localhost', 'Aluno02-B', '', 'GRUPO02');
+        $oConBiblioteca = mysqli_connect('localhost', 'root', '', '.library');
         $oComInsertCep = "INSERT INTO cep (CEPVALOR, CEPLOGRADOURO, CEPNUMERO, CEPBAIRRO, CEPCIDADE, CEPESTADO) VALUES ('$oEndereco', '$oLogradouro', '$oCasa', '$oBairro', '$oCidade', '$oEstado')";
 
-        mysqli_query($oConGRUPO02, $oComInsertCep);
+        mysqli_query($oConBiblioteca, $oComInsertCep);
 
-        mysqli_close($oConGRUPO02);
+        mysqli_close($oConBiblioteca);
     }
 ?>
 

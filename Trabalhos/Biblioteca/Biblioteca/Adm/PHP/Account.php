@@ -4,7 +4,7 @@
 
     // Se der B.O FUDEU
     try{
-        $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02','Aluno02-B', 'Aluno02.2DS');
+        $oCon = new PDO('mysql: host=localhost; dbname=biblioteca','root', '');
     }catch(PDOException $oErro){
         echo "Houve um erro: <br>";
         die($oErro->getMessage());

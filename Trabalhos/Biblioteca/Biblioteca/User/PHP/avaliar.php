@@ -2,7 +2,7 @@
 
 try{
     // var = new PDO('mysqli: host = ip/localhost; dbname = nome do banco', 'usuario', 'senha')
-    $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02', 'Aluno02-B', 'Aluno02.2DS');
+    $oCon = new PDO('mysql: host=localhost; dbname=biblioteca', 'root', '');
 } catch(PDOException $oErro) {
     die($oErro -> getMessage());
 }

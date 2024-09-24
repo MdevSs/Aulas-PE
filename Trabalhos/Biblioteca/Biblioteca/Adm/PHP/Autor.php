@@ -1,25 +1,25 @@
 <?php
     if(isset($_GET["txtNome"])){
-        $genero = $_GET["txtNome"];
-        $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
-        $insertGenero = "INSERT INTO genero(nome) VALUES ('$genero')";
+        $autor = $_GET["txtNome"];
+        $con = mysqli_connect("localhost", "root", "", "biblioteca");
+        $insertAutor = "INSERT INTO autor(nome) VALUES ('$autor')";
         
-        mysqli_query($con, $insertGenero);
+        mysqli_query($con, $insertAutor);
     }
 ?>
 
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../CSS/Genero.css">
+        <link rel="stylesheet" href="../CSS/Autor.css">
         <link rel="shortcut icon" href="../IMG/LogoRoxo.png">
-        <title>Genero</title>
+        <title>Acervo</title>
     </head>
 
     <body>
         <div class="section-1">
             <form>
-                <h1><strong>Genero</strong></h1>
+                <h1><strong>Autor</strong></h1>
 
                 <input type="text" name="txtNome" placeholder="nome">
 
