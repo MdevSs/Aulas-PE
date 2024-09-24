@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --firstColor: #eeeeff;
+    --secondColor: #7b2cbf;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background: #eeeeff url(../IMG/FundoBranco.png);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 80px;
+}
+
+div.header{
+    width: 100vw;
+    height: 10vh;
+    background: var(--firstColor);
+    border-bottom: 1px solid var(--secondColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.header > img{
+    height: 70px;
+}
+
+form{
+    width: 30vw;
+    height: 60vh;
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 60px;
+    box-shadow: 0px 0px 10px #7a2cbf78;
+}
+label{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    /* width: 400px;
+    height: 50px; */
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    padding: 10px;
+    transition: all 0.3s linear;
+}
+
+input::placeholder{
+    color: #7b2cbf;
+}
+
+input:hover, input:focus{
+    transform: scale(1.05);
+    box-shadow: 0px 0px 4px var(--secondColor);
+    color: var(--secondColor);
+    outline: none;
+}
+
+form button{
+    /* width: 400px;*/
+    height: 50px; 
+    background: var(--firstColor);
+    border: 1px solid var(--secondColor);
+    border-radius: 10px;
+    color: var(--secondColor);
+    transition: all 0.6s ease-out;
+}
+
+form button:hover{
+    transform: scale(1.05);
+    background: var(--secondColor);
+    box-shadow: 0px 0px 4px var(--secondColor);
+    color: #eeeeff;
+}
+p{
+    margin: auto;
+}
+p span{
+    color: #3388EE;
+}
+p span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+h2{
+    margin: 0px auto;
+}
