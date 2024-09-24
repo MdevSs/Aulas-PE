@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect("localhost", "root", "", "biblioteca");
+    $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
     if(isset($_POST["nome"])){
         $nome = $_POST["nome"];
         $categoria = $_POST["categoria"];
@@ -69,7 +69,7 @@
 
         <div class="section-1">
             
-            <h1><button type="menu" id="back"><img src="../IMG/seta-para-a-esquerda.png" alt=""></button><strong>Acervo</strong></h1>
+            <h1><button type="menu" id="back"><img src="../IMG/seta-para-a-esquerda.png" alt='Aluno02.2DS'></button><strong>Acervo</strong></h1>
 
             <form method="POST" enctype="multipart/form-data">
                 

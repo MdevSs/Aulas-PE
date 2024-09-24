@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET["txtNome"])){
         $editora = $_GET["txtNome"];
-        $con = mysqli_connect("localhost", "root", "", ".library");
+        $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
         $insertEditora = "INSERT INTO editora(nome) VALUES ('$editora')";
 
         mysqli_query($con, $insertEditora);

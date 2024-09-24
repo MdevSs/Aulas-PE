@@ -2,7 +2,7 @@
     if(isset($_GET["txtNome"])){
         $nome = $_GET["txtNome"];
         $senha = $_GET["txtSenha"];
-        $con = mysqli_connect("localhost", "root", "", ".library");
+        $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
         $insertUsuario = "INSERT INTO usuario(nome, senha) VALUES('$nome', MD5('$senha'))";
         
         mysqli_query($con, $insertUsuario);

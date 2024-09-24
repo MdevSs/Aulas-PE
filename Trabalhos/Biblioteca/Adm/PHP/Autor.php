@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET["txtNome"])){
         $autor = $_GET["txtNome"];
-        $con = mysqli_connect("localhost", "root", "", "biblioteca");
+        $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
         $insertAutor = "INSERT INTO autor(nome) VALUES ('$autor')";
         
         mysqli_query($con, $insertAutor);

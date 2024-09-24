@@ -34,18 +34,18 @@
                 <button class="search relatorio off" value="1">
                     <div class="search-header">
                         
-                        <span> <i class="fa-solid fa-circle"></i> Mais Imprestados</span>
+                        <span> <i class="fa-solid fa-circle"></i> Mais Emprestados</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
                     <form id="form-radios">
                         <label for="">
-                            <span>Somente Imprestados</span>
+                            <span>Somente Emprestados</span>
                             <input type="radio" class="relatorio" name="type" value="1" data-tipo="5">
                         </label>
                         
                         <label for="">
-                            <span>Imprestados e Devolvidos</span>
+                            <span>Emprestados e Devolvidos</span>
                             <input type="radio" class="relatorio" name="type" value="2" data-tipo="5">
                         </label>
                     </form>
@@ -64,7 +64,7 @@
                          <select data-tipo="2" class="relatorio">
                             <?php
                             
-                                $oCon = new PDO('mysql: host=localhost; dbname=biblioteca', 'root', '');
+                                $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02', 'Aluno02-B', 'Aluno02.2DS');
 
                                 $cSQL = "SELECT codigo, nome FROM acervo";
 
