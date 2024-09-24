@@ -241,7 +241,7 @@ button.openButton i{
 .closeButton{
     transform: translate(none);
 }
-button.search .search-header{
+button.search .search-header, div.search .search-header{
     display: inherit;
     flex-direction: row;
     align-items: center;
@@ -357,4 +357,38 @@ select option{
     padding: 10px;
     border-radius: 10px;
     font-weight: bold;
+}
+form[data-tipo="6"]{
+    gap: 10px;
+}
+form[data-tipo="6"] label{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+    width: 100%;
+    background-color: #2a032f;
+    border-radius: 10px;
+    padding: 10px;
+}
+form[data-tipo="6"] label input{
+    width: 10%;
+    border: none;
+    outline: none;
+}
+.down{
+    padding: 10px !important;
+    overflow-y: visible !important;
+    height: 300px !important;
+}
+form[data-tipo="6"] .interval-range{
+    display: inherit;
+    gap: 20px;
+    padding: 0;
+    flex-direction: column;
+    overflow-y: hidden;
+    height: 0px;
+    border-top: 3px solid #17001a;
+    transition: all 0.3s ease-out ;
 }

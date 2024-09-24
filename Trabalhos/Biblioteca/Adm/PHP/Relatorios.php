@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
-                    <form id="form-radios">
+                    <form id="form-radios" class="form-relatorio">
                         <label for="">
                             <span>Somente Imprestados</span>
                             <input type="radio" class="relatorio" name="type" value="1" data-tipo="5">
@@ -58,7 +58,7 @@
                         <span> <i class="fa-solid fa-circle"></i> Livros Relacionados</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
-                    <form>
+                    <form class="form-relatorio">
                         
                         <!-- <input data-tipo="2" type="search" placeholder="Digite o código de um Livro"> -->
                          <select data-tipo="2" class="relatorio">
@@ -87,7 +87,7 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
-                    <form>
+                    <form class="form-relatorio">
                         <input data-tipo="3" type="search" placeholder="Digite o nome do(s) Usuario">
                     </form>
                 </button>
@@ -99,12 +99,12 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
-                    <form>
+                    <form class="form-relatorio">
                         <input data-tipo="4" type="search" placeholder="Pesquise o nome de algo">
                     </form>
                 </button>
 
-                <button class="search relatorio" id="Emprestimo">
+                <div class="search relatorio" id="Emprestimo">
                     <div class="search-header">
                         
                         <span> <i class="fa-solid fa-circle"></i> Emprestimo</span>
@@ -112,17 +112,30 @@
                     </div>
 
                     <form data-tipo="6" id="form-emprestimo">
-
-                        <label for="">Selecione o Intervalo</label>
-                        <div class="interval">
-                            <input type="date">
-                            <input type="date">
+                        
+                        <label for="">
+                            <span>Intervalo</span>
+                            <input type="radio" name="optRange" id="RangeData">
+                        </label>
+                        <div class="interval-range">
+                            <span>Seleciona um intervalo</span>
+                            <input type="date" id="datainicio">
+                            <input type="date" id="datafim">
                         </div>
+                        <label for="">
+                            <span>Somente atrasados</span>
+                            <input type="radio" name="optAtrasados">
+                        </label>
 
-                        <div id="button-submit">Gerar</div>
+                        <label for="">
+                            <span>De hoje e amanhã</span>
+                            <input type="radio" name="optRange" id="RangeToday">
+                        </label>
+
+                        <button id="button-submit" type="submit">Gerar</button>
                     </form>
 
-                </button>
+                </div>
                 
                 
                 <!-- <button><i class="fa-solid fa-circle"></i> Livros Parecidos </button> -->
