@@ -193,7 +193,8 @@
                 LEFT JOIN usuario
                 ON usuario.codigo=emprestimo.usuario
                 WHERE emprestimo.usuario=$oCod
-            ) as tbl;";
+                GROUP BY usuario.nome, atraso.atraso, prazo.prazo
+            ) as tbl";
 
 
             $oRes=$oCon->query($cSQL)->fetchAll(PDO::FETCH_ASSOC);

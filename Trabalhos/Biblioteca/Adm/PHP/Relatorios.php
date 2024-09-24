@@ -112,12 +112,25 @@
                     </div>
 
                     <form data-tipo="6" id="form-emprestimo">
-
-                        <label for="">Selecione o Intervalo</label>
-                        <div class="interval">
+                        
+                        <label for="">
+                            <span>Intervalo</span>
+                            <input type="radio" name="optRange">
+                        </label>
+                        <div class="interval-range">
+                            <span>Seleciona um intervalo</span>
                             <input type="date">
                             <input type="date">
                         </div>
+                        <label for="">
+                            <span>Somente atrasados</span>
+                            <input type="radio" name="optAtrasados">
+                        </label>
+
+                        <label for="">
+                            <span>De hoje e amanhã</span>
+                            <input type="radio" name="optRange">
+                        </label>
 
                         <div id="button-submit">Gerar</div>
                     </form>

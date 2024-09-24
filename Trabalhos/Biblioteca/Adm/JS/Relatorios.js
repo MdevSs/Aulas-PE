@@ -134,7 +134,7 @@
         fnAjax(e.target);
     });
 
-    document.querySelectorAll('input[type="radio"]').forEach(element =>{
+    document.querySelectorAll('#form-radios input[type="radio"]').forEach(element =>{
         element.addEventListener('change', (e)=>{
             console.log(e.target);
             fnAjax(e.target);
@@ -148,3 +148,12 @@
             console.log(valor.value);
         })
     });
+
+    document.querySelector('input[name="optRange"]').addEventListener('change', (e)=>{
+        let content = document.querySelector('.interval-range');
+            content.classList.add('down');
+        });
+
+    document.querySelectorAll('input[name="optRange"]')[1].addEventListener('click', ()=>{
+        document.querySelector('.interval-range').classList.remove('down');
+    })
