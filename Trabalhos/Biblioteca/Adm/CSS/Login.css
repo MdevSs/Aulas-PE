@@ -64,7 +64,7 @@ input{
     border-radius: 10px;
     color: var(--secondColor);
     padding: 10px;
-    transition: all 0.3s ease-out;
+    transition: all 0.3s linear;
 }
 
 input::placeholder{
@@ -85,7 +85,7 @@ form button{
     border: 1px solid var(--secondColor);
     border-radius: 10px;
     color: var(--secondColor);
-    transition: all 0.3s ease;
+    transition: all 0.6s ease-out;
 }
 
 form button:hover{

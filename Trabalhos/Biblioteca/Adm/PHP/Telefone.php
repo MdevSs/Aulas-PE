@@ -10,16 +10,16 @@
         $oBairro = $_GET['oBairro'];
         $oCidade = $_GET['oCidade'];
         $oEstado = $_GET['oEstado'];
-        $oConBiblioteca = mysqli_connect('localhost', 'root', '', '.library');
+        $oConGRUPO02 = mysqli_connect('localhost', 'Aluno02-B', '', 'GRUPO02');
         $oComInsertCep = "INSERT INTO cep (CEPVALOR, CEPLOGRADOURO, CEPNUMERO, CEPBAIRRO, CEPCIDADE, CEPESTADO) VALUES ('$oEndereco', '$oLogradouro', '$oCasa', '$oBairro', '$oCidade', '$oEstado')";
         $oComInsertTelefone = "INSERT INTO telefone (TELPREFIXO, TELDDD, TELNUMERO) VALUES ('$oPais', '$oDDD', $oNumero)";
         $oComInsertCliente = "INSERT INTO cliente (CLINOME, CLITELEFONE, CLICEP) VALUES ('$oNome', (SELECT TELCODIGO FROM telefone WHERE TELPREFIXO = '$oPais' AND TELDDD = '$oDDD' AND TELNUMERO = '$oNumero'), (SELECT CEPCODIGO FROM cep WHERE CEPVALOR = '$oEndereco' AND CEPLOGRADOURO = '$oLogradouro' AND CEPNUMERO = '$oCasa' AND CEPBAIRRO = '$oBairro' AND CEPCIDADE = '$oCidade' AND CEPESTADO = '$oEstado'))";
 
-        mysqli_query($oConBiblioteca, $oComInsertCep);
-        mysqli_query($oConBiblioteca, $oComInsertTelefone);
-        mysqli_query($oConBiblioteca, $oComInsertCliente);
+        mysqli_query($oConGRUPO02, $oComInsertCep);
+        mysqli_query($oConGRUPO02, $oComInsertTelefone);
+        mysqli_query($oConGRUPO02, $oComInsertCliente);
 
-        mysqli_close($oConBiblioteca);
+        mysqli_close($oConGRUPO02);
     }
 ?>
 
@@ -47,7 +47,7 @@
                 <div class="usuario">
                     <select name="usuario">
                         <?php
-                            $con = mysqli_connect("localhost", "root", "", ".library");
+                            $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
                             $select = "SELECT codigo, nome FROM usuario";
                             $execute = mysqli_query($con, $select);
 

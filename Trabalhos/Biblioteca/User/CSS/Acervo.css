@@ -30,7 +30,7 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    border: 3px solid var(--secondColor);
+    border: 1px solid var(--secondColor);
 }
 .livro img[src="../IMG/stars.png"]{
     background: linear-gradient(to right, #FFF000 0%, tranparent 0%);
@@ -66,7 +66,7 @@ main{
     height: auto;
     flex-direction: column;
     padding: 40px 100px 100px;
-    background-color: #5b5b8c3a;
+    background-color: transparent;
     backdrop-filter: blur(1px);
     gap: 30px;
 }
@@ -99,9 +99,9 @@ main a:hover{
     padding: 40px;
     justify-content: space-evenly;
     gap: 20px;
-    background-color: #FAFAFA;
+    background-color: var(--firstColor);
     width: 100%;
     flex-wrap: wrap;
     border-radius: 20px;
-    border:  3px solid var(--secondColor);
+    border:  1px solid var(--secondColor);
  }
