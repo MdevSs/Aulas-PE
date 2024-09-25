@@ -124,7 +124,7 @@
                         </div>
                         <label for="">
                             <span>Somente atrasados</span>
-                            <input type="radio" name="optAtrasados">
+                            <input type="checkbox" name="optAtrasados">
                         </label>
 
                         <label for="">

@@ -119,7 +119,7 @@
 
 
         // Testo pra saber se alguem digitou uma virgula
-        if(str_contains($oUs,',')==true)
+        if(str_contains($oUs,',')!=false)
         {
             // 'explodo o vetor' (separa pelas ocorencias de ',' a string do segundo parametro, e joga no vetor que criei)
             // EU POSSO COLOCAR PRA ELE SEPARAR POR ' ' (espaco), mas nao coloquei, futuramente posso 
@@ -354,32 +354,71 @@
     }
 
 
-    function fnEmprestimo(array $data){
+    function fnEmprestimo(bool $atrasados=null, bool $today=null, array $data=null){
         global $oCon;
 
         $cSQL="SELECT emprestimo.codigo, usuario.nome, acervo.nome, DATE_FORMAT(datainicio, '%d/%m/%Y') as 'data emprestimo'
         , DATE_FORMAT(datafim, '%d/%m/%Y') 'data devolver', DATE_FORMAT(devolvido, '%d/%m/%Y') as 'devolvido' FROM `emprestimo` LEFT JOIN usuario ON usuario.codigo=emprestimo.usuario LEFT JOIN acervo ON acervo.codigo=emprestimo.acervo WHERE 1=1 ";
 
-        foreach($data as $index => $value){
-            if($index=="date"){
-                    $valores = $data['date'];
-                    if(isset($valores['datainicio'])) {
-                        $cSQL .= "AND datainicio = $valores[datainicio] ";
+            if(!is_null($data)){
+            
+                if($data['datainicio']!==null && $data['datainicio']!="null" && $data['datainicio'] != 'undefined')
+                    $data1 = new DateTime($data['datainicio']);
+                else 
+                    $data1=null;
+                    
+                // echo $data['datafim'].'<br><br><br>';
+                if(!is_null($data['datafim']) && $data['datafim']!="null" && $data['datafim'] != 'undefined')
+                    $data2 = new DateTime($data['datafim']);
+                else
+                    $data2=null;
+
+                if($data1!==null && $data1!="null" && $data1 != 'undefined' && $data2!==null && $data2!="null" && $data2 != 'undefined')
+                {
+                    if($data1<$data2) {
+                        if(!is_null($data['datainicio']) && $data['datainicio'] != 'null' && $data['datainicio'] != 'undefined') {
+                            // $cSQL .= "AND datainicio > '". $data['datainicio'] ."' OR devolvido > '". $data['datainicio'] ."' OR datafim> '". $data['datainicio'] ."' ";
+                            $cSQL .= "AND datainicio >= '". $data['datainicio'] ."' ";
+                        }
+                        if(!is_null($data['datafim']) && $data['datafim'] != 'null' && $data['datafim'] != 'undefined'){
+                            // $cSQL .= "AND datafim < '". $data['datafim'] ."' OR devolvido < '". $data['datafim'] ."' OR datainicio < '". $data['datafim'] ."' ";
+                            // echo "datafim1";
+                            $cSQL .= "AND datafim <= '". $data['datafim'] ."' ";
+                        }
+                    }else {
+                        if(!is_null($data['datainicio']) && $data['datainicio'] != 'null' && $data['datainicio'] != 'undefined') {
+                            // $cSQL .= "AND datafim <  '". $data['datainicio'] ."' OR devolvido < '". $data['datainicio'] ."' OR datainicio < '". $data['datainicio'] ."' ";
+
+                            $cSQL .= "AND datafim <= '". $data['datainicio'] ."' ";
+                        }
+                        if(!is_null($data['datafim']) && $data['datafim'] != 'null' && $data['datafim'] != 'undefined'){
+                            // $cSQL .= "AND datainicio >  '". $data['datafim'] ."' OR devolvido > '". $data['datafim'] ."' OR datafim > '". $data['datafim'] ."' ";
+                            // echo 'datafim2';
+                            $cSQL .= "AND datainicio >= '". $data['datafim'] ."' ";
+                        }
                     }
-                    if(isset($valores['datafim'])){
-                        $cSQL .= "AND datafim = $valores[datafim] ";
+                }else{
+                    if($data1!==null && $data1!="null" && $data1 != 'undefined') {
+
+                        $cSQL .= "AND datainicio >= '". $data['datainicio'] ."' ";
+                    }
+                    if($data2!==null && $data2!="null" && $data2 != 'undefined') {
+                        // echo 'datafim3';
+                        $cSQL .= "AND datafim  <=  '". $data['datafim'] ."' ";
                     }
                 }
-            if($index=="atrasados"){
-                    $cSQL .= "AND devolvido>datafim OR DATE_FORMAT(NOW(), '%Y-%m-%d')>datafim ";
+            }
+            if(!is_null($_GET['atrasados']) && $_GET['atrasados'] != "null"){
+                    $cSQL .= "AND devolvido>datafim ";
             }
 
-            if($index="today"){
+            if(!is_null($_GET['today']) && $_GET['today'] != "null"){
                     $cSQL .= "AND datainicio=DATE_FORMAT(NOW(), '%Y-%m-%d') OR datafim=DATE_FORMAT(NOW(), '%Y-%m-%d') OR devolvido=DATE_FORMAT(NOW(), '%Y-%m-%d') ";
             }
+            // echo $cSQL;
             $oRes=$oCon->query($cSQL, PDO::FETCH_ASSOC)->fetchAll();
             return json_encode($oRes);
-        }
+        
     }
 
 
@@ -450,9 +489,15 @@
 
 
                 case 6:
-                    $data = {
-                    };
-                    echo fnEmprestimo($_GET['atrasados']);
+                    $data = [];
+                    if(!is_null($_GET['datainicio'])) {
+                        $data['datainicio'] = $_GET['datainicio'];
+                    }
+                    if(!is_null($_GET['datafim'])) {
+                        $data['datafim']=$_GET['datafim'];
+                                
+                    }
+                    echo fnEmprestimo($_GET['atrasados'], $_GET['today'], $data);
                     break;
 
                 default:

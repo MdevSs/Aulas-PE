@@ -162,38 +162,51 @@
         e.preventDefault();
         console.log("enviou");
         let data={};
+        data.date={};
         if(document.querySelector('input#RangeData').checked){
             data.date={};
             if(document.querySelector('#datainicio').value!=""){
                 data.date.datainicio =  document.querySelector('#datainicio').value;
-                
+                document.querySelector('#datainicio').style.border = "2px solid #00AA00";
             }else{
-                data.date.datainicio = null;
+                data.date.datainicio = undefined;
+                document.querySelector('#datainicio').scrollIntoView({behavior: 'smooth', block: 'center'});
+                document.querySelector('#datainicio').style.border = "3px solid #FF0000";
             }
 
             if(document.querySelector('#datafim').value!=""){
                 data.date.datafim = document.querySelector('#datafim').value;
+                document.querySelector('#datafim').style.border = "2px solid #00AA00";
             }else{
-                data.date.datafim = null
-                
+                data.date.datafim = undefined;
+                document.querySelector('#datafim').scrollIntoView({behavior: 'smooth', block: 'center'});
+                document.querySelector('#datafim').style.border = "3px solid #FF0000";
             }   
+        }else{
+            data.date = {
+                'datainicio': null,
+                'datafim': null
+            };
         }
 
         if(document.querySelector('input[name="optAtrasados"]').checked) {
 
             data.atrasados = true;
 
+        }else
+        {
+            data.atrasados = null;
         }
 
         if(document.querySelector('input#RangeToday').checked) {
             data.today = true;
-        }
+        }else
+            data.today = null;
         console.log(data);
-        let par = new URLSearchParams(data).toString();
-        console.log(par);
-        console.log(typeof data === 'object' && data !== null);
-        console.log(`API/api-json.php?nTipo=2&txtTabela=null&nFuncao=6&txtParametro=${JSON.stringify(data)}`);
-        fetch(`API/api-json.php?nTipo=2&txtTabela=null&nFuncao=6&${par}`)
+        
+
+        console.log(`API/api-json.php?nTipo=2&txtTabela=null&nFuncao=6&atrasados=${data.atrasados}&today=${data.today}&datainicio=${data.date.datainicio}&datafim=${data.date.datafim}`);
+        fetch(`API/api-json.php?nTipo=2&txtTabela=null&nFuncao=6&atrasados=${data.atrasados}&today=${data.today}&datainicio=${data.date.datainicio}&datafim=${data.date.datafim}`)
         .then(response=>response.json())
         .then(data => {
             oDadosAjax = data;

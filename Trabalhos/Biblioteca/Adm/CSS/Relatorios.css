@@ -335,10 +335,11 @@ select option{
 #form-emprestimo{
     display: inherit;
     flex-direction: column;
+    justify-content: center;
     overflow-y: auto;   
 }
 #Emprestimo.show{
-    height: 320px;
+    height: 550px;
     
 }
 #form-emprestimo .interval{
@@ -380,7 +381,7 @@ form[data-tipo="6"] label input{
 .down{
     padding: 10px !important;
     overflow-y: visible !important;
-    height: 300px !important;
+    height: 500px !important;
 }
 form[data-tipo="6"] .interval-range{
     display: inherit;
