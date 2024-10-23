@@ -48,7 +48,6 @@
     </body>
 
     <script>
-
         oCad = document.querySelector('#cad');
         oLog = document.querySelector('#log');
         obtn = document.querySelector('#toogle')
@@ -57,20 +56,20 @@
         console.log(oCad);
         console.log(oLog);
 
-        function fnToogle(e){
+        function fnToogle(e) {
             console.log(oCad.style.display);
             // if(e.target)
-            if(oCad.style.display != 'none'){
+            if(oCad.style.display != 'none') {
                 oCad.style.display = "none";
                 oLog.style.display = "flex";
                 oTi.innerText = "Login";
-            }else{
+            }
+            else {
                 oCad.style.display = "flex";
                 oLog.style.display = "none";
                 oTi.innerText = "Cadastro";
             }
         }
-
     </script>
 
 </html>

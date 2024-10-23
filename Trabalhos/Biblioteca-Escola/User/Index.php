@@ -8,11 +8,18 @@
 
     <body>
         <div class="header">
-            <a href="PHP/Acervo.php">
-                <div class="item" value="1"><strong>Acervo</strong></div>
-            </a>
+            <div class="user">
+                <?php
+                    session_start();
+                    echo '<strong>Ola, ' . $_SESSION['txtNome'] . '!</strong>';
+                ?>
+            </div>
 
-            <div class="item" value="2"><strong>Emprestimos</strong></div>
+            <div class="item">
+                <a href="PHP/Acervo.php"><strong>Acervo</strong></a>
+    
+                <a href="PHP/Emprestimo.php"><strong>Emprestimos</strong></a>
+            </div>
         </div>
 
         <div class="section-1">
@@ -29,7 +36,7 @@
 
                 <p>
                     <strong>
-                        Uma das maiores .the_librarys online existentes do mundo a sua disposição. Em nosso catálogo possuímos mais de 1000 dos melhores livros já produzidos para o seu entretenimento e cultura. Varie desde medicina e assassinato até mitologia e mistério acompanhando tudo de perto no melhor lugar.
+                        Somos uma das maiores .the_librarys existentes do mundo. Com um catálogo de mais 1000 livros já finalizados para você! Varie desde medicina e assassinato até mitologia e mistério acompanhando tudo de perto no melhor lugar.
                     </strong>
                 </p>
             </div>
@@ -39,7 +46,7 @@
             <div class="livro">
                 <p>
                     <strong>
-                        O maior objetivo presente em nossa livraria é trazer os mais diversos universos existentes criados pelos maiores autores para o seu próprio enriquecimento pessoal. É lendo que podemos nos aprofundar em ideias e pensamentos, justamente o que mais desejamos. Nossos leitores podem experienciar uma cultura extremamente rica e diversa em um único lugar. 
+                        O nosso maior objetivo é permitir que, qualquer pessoa possa pegar qualquer um de nossos livros em qualquer dia para entrar no vasto mundo da leitura! Então venha logo e tire uma foto do seu cartão de credito/debito e mande para nós! Não esqueça de colocar dinheiro na conta!
                     </strong>
                 </p>
 

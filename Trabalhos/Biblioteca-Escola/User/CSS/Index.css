@@ -16,9 +16,7 @@ config da pag
 }
 
 body{
-    width: auto;
-    height: auto;
-    background: transparent;
+    background: none;
     overflow-x: hidden;
 }
 
@@ -31,13 +29,27 @@ div.header{
     background: transparent;
     position: absolute;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     gap: 20px;
 }
 
-div.header > div.item, a{
+div.header > div.user{
+    width: auto;
+    height: auto;
+    color: var(--firstColor);
+    font-size: 20px;
+}
+
+div.header > div.item{
+    width: auto;
+    height: auto;
+    display: flex;
+    gap: 20px;
+}
+
+div.header > div.item > a{
     width: 200px;
     height: 50px;
     color: var(--firstColor);
@@ -48,8 +60,8 @@ div.header > div.item, a{
     transition: all 0.3s linear;
 }
 
-div.header > div.item:hover, a:hover{
-    transform: scale(1.1);
+div.header > div.item > a:hover{
+    transform: scale(1.05);
     border: 1px solid var(--firstColor);
     box-shadow: 0px 0px 10px var(--firstColor);
 }

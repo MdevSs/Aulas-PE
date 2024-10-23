@@ -2,7 +2,7 @@
     if(isset($_GET["txtNome"])){
         $nome = $_GET["txtNome"];
         $senha = $_GET["txtSenha"];
-        $con = mysqli_connect("localhost", "Aluno02-B", 'Aluno02.2DS', "GRUPO02");
+        $con = mysqli_connect("localhost", "root", "", ".library");
         $insertUsuario = "INSERT INTO usuario(nome, senha) VALUES('$nome', MD5('$senha'))";
         
         mysqli_query($con, $insertUsuario);
@@ -32,7 +32,8 @@
                     <input type="text" name="txtSenha" placeholder="senha">
                 </div>
 
-                <button>Cadastrar</button>
+                <button type="submit">Cadastrar</button>
+                <a href="Home.php"><button type="button">Voltar</button></a>
             </form>
         </div>
     </body>

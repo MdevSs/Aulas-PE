@@ -1,7 +1,8 @@
 <?php
-        $oCon = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
-        
+        // $oCon = mysqli_connect('localhost', 'Aluno02-B', 'Aluno02.2DS', 'GRUPO02');
+        $oCon = mysqli_connect('localhost', 'root', '', '.the_library');
         $oCmd = "SELECT COUNT(DATAINICIO), ACERVO.NOME, CONCAT('rgb(', FLOOR(RAND()*255), ', ', FLOOR(RAND()*255), ', ', FLOOR(RAND()*255), ', 0.5)') FROM EMPRESTIMO LEFT JOIN ACERVO ON ACERVO = ACERVO.CODIGO GROUP BY NOME";
+
 
         $oRes = mysqli_query($oCon, $oCmd);
         
@@ -29,12 +30,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="shortcut icon" href="../IMG/Home.png" type="image/png">
-    <title>Home - Biblioteca | Library</title>
+    <title>Home | The Library</title>
 </head>
 <body>
     
     <header>
-        <h1>Biblioteca</h1>
+        <h1>.the_library</h1>
     </header>
 
     <main> 

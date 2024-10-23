@@ -1,11 +1,10 @@
-
 <?php
     // Abre conexão
-
     // Se der B.O FUDEU
     try{
-        $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02','Aluno02-B', 'Aluno02.2DS');
-    }catch(PDOException $oErro){
+        $oCon = new PDO('mysql: host=localhost; dbname=.the_library','root', '');
+    }
+    catch(PDOException $oErro) {
         echo "Houve um erro: <br>";
         die($oErro->getMessage());
     }
@@ -15,10 +14,7 @@
         'txtSenha' => $_POST['txtSenha']
     );
 
-
-
     $oRes;
-
 
     // Inicia um SESSION
     session_start();
@@ -50,7 +46,7 @@
                     if($oRes == true)
                     {
                         $_SESSION['txtNome'] = $vDados['txtNome'];
-                        header('Location: ../../User/index.htm');
+                        header('Location: ../../User/index.php');
                     }else{
                             
                         }
@@ -111,7 +107,7 @@
                             var_dump($_SESSION['txtNome']);
 
                             // Troco de pagina
-                            header('Location: ../../User/index.htm');
+                            header('Location: ../../User/index.php');
                         }else{
                             header('Location: ../PHP/Home.php');
                         }

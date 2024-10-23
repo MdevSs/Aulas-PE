@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/Relatorios.css">
-    <title>Relatórios | Biblioteca</title>
+    <title>Relatórios | .the_library</title>
 </head>
 <body>
     <main>
         <!-- barra lateral -->
         <div class="side-bar">
+            <a href="./Home.php" target="_blank">
+                <i class="fa-regular fa-circle-left" style="color: #ffffff;"></i>
+                <span style="color: #FFFFFF;">Voltar</span>
+            </a>
             <button class="openButton"><i class="fa-solid fa-chevron-right"></i></button>
             <!-- tabelas -->
             <div class="tables">
@@ -34,18 +37,18 @@
                 <button class="search relatorio off" value="1">
                     <div class="search-header">
                         
-                        <span> <i class="fa-solid fa-circle"></i> Mais Emprestados</span>
+                        <span> <i class="fa-solid fa-circle"></i> Mais Imprestados</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
-                    <form id="form-radios">
+                    <form id="form-radios" class="form-relatorio">
                         <label for="">
-                            <span>Somente Emprestados</span>
+                            <span>Somente Imprestados</span>
                             <input type="radio" class="relatorio" name="type" value="1" data-tipo="5">
                         </label>
                         
                         <label for="">
-                            <span>Emprestados e Devolvidos</span>
+                            <span>Imprestados e Devolvidos</span>
                             <input type="radio" class="relatorio" name="type" value="2" data-tipo="5">
                         </label>
                     </form>
@@ -58,13 +61,13 @@
                         <span> <i class="fa-solid fa-circle"></i> Livros Relacionados</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
-                    <form>
+                    <form class="form-relatorio">
                         
                         <!-- <input data-tipo="2" type="search" placeholder="Digite o código de um Livro"> -->
                          <select data-tipo="2" class="relatorio">
                             <?php
                             
-                                $oCon = new PDO('mysql: host=localhost; dbname=GRUPO02', 'Aluno02-B', 'Aluno02.2DS');
+                                $oCon = new PDO('mysql: host=localhost; dbname=.the_library', 'root', '');
 
                                 $cSQL = "SELECT codigo, nome FROM acervo";
 
@@ -87,7 +90,7 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
-                    <form>
+                    <form class="form-relatorio">
                         <input data-tipo="3" type="search" placeholder="Digite o nome do(s) Usuario">
                     </form>
                 </button>
@@ -99,12 +102,12 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
 
-                    <form>
+                    <form class="form-relatorio">
                         <input data-tipo="4" type="search" placeholder="Pesquise o nome de algo">
                     </form>
                 </button>
 
-                <button class="search relatorio" id="Emprestimo">
+                <div class="search relatorio" id="Emprestimo">
                     <div class="search-header">
                         
                         <span> <i class="fa-solid fa-circle"></i> Emprestimo</span>
@@ -112,17 +115,30 @@
                     </div>
 
                     <form data-tipo="6" id="form-emprestimo">
-
-                        <label for="">Selecione o Intervalo</label>
-                        <div class="interval">
-                            <input type="date">
-                            <input type="date">
+                        
+                        <label for="">
+                            <span>Intervalo</span>
+                            <input type="radio" name="optRange" id="RangeData">
+                        </label>
+                        <div class="interval-range">
+                            <span>Seleciona um intervalo</span>
+                            <input type="date" id="datainicio">
+                            <input type="date" id="datafim">
                         </div>
+                        <label for="">
+                            <span>Somente atrasados</span>
+                            <input type="checkbox" name="optAtrasados">
+                        </label>
 
-                        <div id="button-submit">Gerar</div>
+                        <label for="">
+                            <span>De hoje e amanhã</span>
+                            <input type="radio" name="optRange" id="RangeToday">
+                        </label>
+
+                        <button id="button-submit" type="submit">Gerar</button>
                     </form>
 
-                </button>
+                </div>
                 
                 
                 <!-- <button><i class="fa-solid fa-circle"></i> Livros Parecidos </button> -->
